@@ -1,0 +1,10 @@
+
+<div class="side">
+	<%= render "/partials/menu" %>
+</div>
+<div class="main">
+	<div class="position">
+		<a href="/">首页</a>&gt;&gt;<a href="<%= @node.show_url %>"><%= @node.name %></a>&gt;&gt;<a href="<%= @category.show_url %>"><%= @category.name %></a>
+	</div>
+	<%= render "/partials/products_list" %>
+</div>

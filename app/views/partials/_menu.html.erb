@@ -1,0 +1,33 @@
+	<div class="category_list">
+		<div class="im"></div>
+		<ul class="nodes">
+			<% for node in @nodes %>
+			<li class="node open">
+				<div class="node_t"><a href="<%= node.show_url %>"><%= node.name %></a></div>
+				<ul class="categories clearfix">
+					<% for category in node.categories %>
+					<li>
+						<a href="<%= category.show_url %>"><%= category.name %></a>
+					</li>
+					<% end %>
+				</ul>
+			</li>
+			<% end %>
+		</ul>
+		<div class="an_cat" style="border:0;">
+			<div class="an_cat_title">按出版社</div>
+			<ul class="publish_cat">
+			<% for pub in @publishes %>
+				<li><a href="<%= pub.show_url %>"><%= pub.name %></a></li>
+			<% end %>
+			</ul>
+		</div>
+		<div class="an_cat">
+			<div class="an_cat_title">推荐作者</div>
+			<ul class="author_cat">
+			<% for author in @authors %>
+				<li><a href="<%= author.show_url %>"><%= author.name %></a></li>
+			<% end %>
+			</ul>
+		</div>
+	</div>

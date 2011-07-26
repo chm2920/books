@@ -1,0 +1,11 @@
+
+	<ul class="ps_list clearfix">
+		<% for p in @ps %>
+		<li>
+			<div class="p_img"><a href="<%= p.show_url %>"><img src="<%= p.image %>" /></a></div>
+			<div class="p_title"><a href="<%= p.show_url %>">《<%= p.title %>》</a></div>
+			<div class="p_price"><span class="old"><%= show_price(p.old_price) %></span>→<span class="new"><%= show_price(p.price) %></span></div>
+		</li>
+		<% end %>
+	</ul>
+	<div class="p_pagination"><%= will_paginate @ps %></div>

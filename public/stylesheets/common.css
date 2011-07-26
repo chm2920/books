@@ -1,0 +1,62 @@
+*{margin:0;padding:0;}
+body{margin:0;padding:0;font-size:12px;color:#333;text-align:center;font-family:SimSun;}
+form,ul,ul li,p{margin:0;padding:0;}
+ul, ul li{list-style:none;}
+a{color:#333;text-decoration:none;}
+a:hover{color:#ff2894;text-decoration:underline;}
+img{border:0px;}
+.clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden; }
+* html>body .clearfix { display:inline-block; width:100%; }
+* html .clearfix { height:1%; /* End hide from IE-mac */ } 
+/* ie7 hack*/ 
+*+html .clearfix { min-height:1%; } 
+.clearfix{zoom:1;} 
+
+h1, h2, h3, h4, h5, h6{margin: 0;padding: 0;}
+input, option, select, textarea, button {font-size: 12px;}
+
+#Container{width:100%;text-align:center;margin:0 auto;background:#FFF;}
+#wapper{margin:0 auto;width:998px;text-align:left;}
+
+#Header{height:90px;}
+	#logo{float:left;display:inline;margin:10px 0 0 20px;width:200px;height:60px;line-height:60px;text-align:center;border:1px solid #EEE;}
+	.user_info{float:right;display:inline;}
+		.user_panel{height:30px;line-height:30px;}
+		.user_panel a{padding:0 8px;}
+		.user_account{padding-top:30px;text-align:right;}
+		.user_account a{padding:0 8px;}
+	
+#Nav{background:#999;padding:2px;}
+	.nav_l{float:left;display:inline;width:796px;background:#DDD;}
+	.nav_r{float:left;display:inline;width:196px;height:66px;border-left:2px solid #EEE;background:#FFF;}
+	.NavList{height:36px;}
+		.NavList li{float:left;display:inline;height:36px;line-height:36px;}
+		.NavList li.current{background:#CCC;}
+		.NavList li a{font-size:14px;font-weight:normal;color:#333;padding:0 28px;border-left:1px solid #CCC;}
+		.NavList li a:hover{color:#333;text-decoration:underline;}
+		.NavList li.first a{border:0;}
+		.NavList li.current a{color:#FFF;font-weight:bold;}
+		.NavList li.current a:hover{color:#FFF;text-decoration:none;}
+	.Search{height:30px;line-height:30px;background:#EEE;}
+		.s_txt{float:left;display:inline;padding-left:10px;}
+			.s_txt input{padding:2px 4px;}
+		.hotkws{float:left;display:inline;margin-left:20px;}
+			.hotkws a{margin:0 6px;}
+	.nav_r p{line-height:32px;padding-left:10px;}
+		
+
+#PageBody{height:auto !important;margin:auto;min-height:200px;text-align:left;padding-top:10px;}
+
+#HelpCenter{margin-top:18px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;background:#EEE;}
+.f_logo{float:left;display:inline;width:100px;height:100px;border:1px solid #E4E4E4;margin:10px 0 0 10px;}
+.help_ul{float:left;display:inline;margin-left:28px;}
+.help_li{float:left;display:inline;width:120px;height:180px;padding:28px 0 0 18px;border-left:1px solid #E4E4E4;}
+.help_t{font-size:12px;font-weight:bold;color:#333;}
+.help_items{padding:10px 0 20px 0;}
+	.help_items li{height:23px;line-height:23px;}
+	.help_items li a{color:#666;}
+
+#Friendlinks{height:35px;line-height:35px;}
+
+#Footer{padding:20px 0;text-align:center;}
+

@@ -1,0 +1,61 @@
+
+<div class="side">
+	<%= render "/partials/menu" %>
+	<!--div class="history">
+		<div class="c_t">我最近看过</div>
+		<ul>
+			<li>
+				<p><a href="#"></a></p>
+				<p><a href="#">头层牛皮混搭双色织带设计男士单肩斜挎包 9901 咖 均码</a></p>
+				<p>￥708.00|￥389.00</p>
+			</li>
+			<li>
+				<p><a href="#"></a></p>
+				<p><a href="#">头层牛皮混搭双色织带设计男士单肩斜挎包 9901 咖 均码</a></p>
+				<p>￥708.00|￥389.00</p>
+			</li>
+		</ul>
+	</div-->
+</div>
+<div class="main">
+	<div class="position">
+		<a href="/">首页</a>&gt;&gt;<a href="<%= @node.show_url %>"><%= @node.name %></a>
+		&gt;&gt;<a href="<%= @category.show_url %>"><%= @category.name %></a>
+		&gt;&gt;<a href="<%= @product.show_url %>" class="r"><%= @product.title %></a>
+	</div>
+	<div class="product_info clearfix">
+		<div class="ps_img">
+			<a href="<%= @product.image %>" title="查看大图"><img src="<%= @product.image %>" alt="<%= @product.title %>" /></a>
+		</div>
+		<div class="ps_detail">
+			<div class="ps_t"><%= @product.title %></div>
+			<div class="ps_i"><span>作者：</span><%= @product.author.name %></div>
+			<div class="ps_i"><span>出版社：</span><%= @product.publish.name %></div>
+			<% for prop in @props %>
+			<div class="ps_i"><span><%= prop.zh %>：</span><%= @property[prop.name] %></div>
+			<% end %>
+			<div class="ps_i"><span>库存：</span><%= @product.num %></div>
+			<div class="ps_i"><span>定价：</span><%= show_price_f(@product.old_price) %></div>
+			<div class="ps_i"><span>售价：</span><%= show_price_f(@product.price) %></div>
+			<div class="ps_ch">
+				<div class="ps_ch_btn">
+					<a href="#"><img src="/images/order1.gif" /></a>
+					<a href="#"><img src="/images/addfavorites1.gif" /></a>
+				</div>
+				<div class="ps_static">累计售出0件<!-- 已有0人评价 --> </div>
+			</div>
+		</div>
+	</div>
+	<div class="product_intro">
+		<div class="product_intro_t"><%= @product.title %> 内容简介</div>
+		<div class="product_intro_c"><%= simple_format @product.intro %></div>
+	</div>
+	<div class="product_intro">
+		<div class="product_intro_t"><%= @product.title %> 目录</div>
+		<div class="product_intro_c"><%= simple_format @product.catalogs %></div>
+	</div>
+	<div class="product_intro">
+		<div class="product_intro_t"><%= @product.title %> 资料</div>
+		<div class="product_intro_c"><%= @product.summary %></div>
+	</div>
+</div>

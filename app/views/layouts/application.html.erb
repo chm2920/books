@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>经典书社</title>
+  <%= stylesheet_link_tag "common", "main" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="Container">
+<div id="wapper">
+	<div id="Header">
+		<div id="logo"><a href="/">经典书社</a>-读经典，传国学</div>
+		<div class="user_info">
+			<div class="user_panel">
+				<a href="#">我的帐户</a>|<a href="#">订单查询</a>|<a href="#">帮助中心</a>|<a href="#">在线客服</a>
+			</div>
+			<div class="user_account">
+				<a href="/login">登录</a><a href="/reg">注册</a>
+			</div>
+		</div>
+	</div>
+	<div id="Nav" class="clearfix">
+		<div class="nav_l">
+			<ul class="NavList">
+				<li class="first current"><a href="/">首页</a></li>
+				<% for node in @nodes %>
+				<li><a href="<%= node.show_url %>"><%= node.name %></a></li>
+				<% end %>
+			</ul>
+			<div class="Search">
+				<div class="s_txt">
+					<form name="sForm" method="post" action="/search">
+						<input type="text" name="keyword" value="" />
+						<input type="submit" name="submit" value="搜索" />
+					</form>
+				</div>
+				<div class="hotkws">
+					热门关键词:<a href="#">我说参同契</a><a href="#">我说参同契</a><a href="#">我说参同契</a><a href="#">我说参同契</a><a href="#">我说参同契</a>  
+				</div>
+			</div>
+		</div>
+		<div class="nav_r">
+			<p><a href="#">购物车内有 0 件商品</a></p>
+			<p>合计0.00 元<a href="#">去结算</a></p>
+		</div>
+	</div>
+	<div id="PageBody" class="clearfix">
+		<%= yield %>
+	</div>
+	<div id="HelpCenter" class="clearfix">
+		<div class="f_logo"><a href="/">Foot logo</a></div>
+		<ul class="help_ul">
+			<% for category in @news_categories %>
+			<li class="help_li">
+				<div class="help_t"><%= category.name %></div>
+				<ul class="help_items">
+					<% for topic in category.news_topics %>
+					<li><a href="<%= topic.show_url %>"><%= topic.title %></a></li>
+					<% end %>
+				</ul>
+			</li>
+			<% end %>
+		</ul>
+	</div>
+	<div id="Friendlinks">
+		<a href="/">经典书社</a>
+		&nbsp;|&nbsp;
+		<a href="http://bbs.guoxue.com/index.php" target="_blank">国学论坛</a>
+	</div>
+	<div id="Footer">
+		经典书社 &copy; copyright 2011 京ICP备08002883号
+	</div>
+</div>
+</div>
+
+</body>
+</html>

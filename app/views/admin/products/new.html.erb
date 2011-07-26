@@ -1,0 +1,97 @@
+<table align="CENTER" width="100%" border="0" cellspacing="0" cellpadding="0" class="main">
+	<tr>
+		<td align="left" height="30" class="data_td_bg">
+			&nbsp;&nbsp;&nbsp;管理导航：&nbsp;&nbsp;<a href="/admin/products/index">产品管理</a>
+			&nbsp;|&nbsp; <a href="/admin/products/new">产品添加</a>
+		</td>
+	</tr>
+</table>
+<table align="CENTER" width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="CENTER" valign="MIDDLE">&nbsp;</td>
+	</tr>
+</table>
+<%= form_for([:admin, @product], :html => {:multipart => true}) do |f| %>
+<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#CCCCCC">
+	<tr>
+		<td class="top-nav" bgcolor="#2E9AC8" height="28" colspan="2">&nbsp;&nbsp;&nbsp;<img src="/images/admin/arr_right.gif">&nbsp;&nbsp;
+		<strong>新增</strong></td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">标题：</td>
+		<td class="data_td_text"><input type="text" value="" name="product[title]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">分类：</td>
+		<td class="data_td_text">
+			<select name="product[category_id]" id="product_category_id" class="input_text">
+				<%= option_groups_from_collection_for_select @nodes, :categories, :name, :id, :name %>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">作者：</td>
+		<td class="data_td_text">
+			<select name="product[author_id]" id="product_author_id" class="input_text">
+				<%= options_from_collection_for_select @authors, :id, :name %>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">出版社：</td>
+		<td class="data_td_text">
+			<select name="product[publish_id]" id="product_publish_id" class="input_text">
+				<%= options_from_collection_for_select @publishes, :id, :name %>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">图片：</td>
+		<td class="data_td_text"><input type="file" value="" name="product[image]" id="product_image" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">定价：</td>
+		<td class="data_td_text"><input type="text" value="" name="product[old_price]" id="product_old_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">售价：</td>
+		<td class="data_td_text"><input type="text" value="" name="product[price]" id="product_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">库存：</td>
+		<td class="data_td_text"><input type="text" value="" name="product[num]" id="product_num" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<% for p in @props %>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT"><%= p.zh %>：</td>
+		<td class="data_td_text"><input type="text" value="" name="property[<%= p.name %>]" id="property_<%= p.name %>" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<% end %>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">目录：</td>
+		<td class="data_td_text"><%= f.text_area :catalogs, :style => "width:600px;height:360px;" %>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">资料：</td>
+		<td class="data_td_text"><%= f.text_area :summary, :style => "width:600px;height:360px;" %>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">简介：</td>
+		<td class="data_td_text"><%= f.text_area :intro, :style => "width:600px;height:360px;", :id => "kindeditor" %>
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF" colspan="2" align="CENTER" height="30">
+			<input type="submit" name="submit" value="提交" class="btn_ok">
+		</td>
+	</tr>
+</table>
+<% end %>
