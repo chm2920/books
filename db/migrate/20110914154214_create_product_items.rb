@@ -1,0 +1,13 @@
+class CreateProductItems < ActiveRecord::Migration
+  def self.up
+    create_table :product_items do |t|
+      t.integer :product_id
+      t.integer :pitem_id
+      t.text :val
+    end
+  end
+
+  def self.down
+    drop_table :product_items
+  end
+end

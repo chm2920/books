@@ -29,10 +29,6 @@ Category.create(:node_id => n.id, :name => "中医五官科", :summary => "中�
 Category.create(:node_id => n.id, :name => "中医养生美容学", :summary => "中医养生美容学")
 Category.create(:node_id => n.id, :name => "中医其他学科", :summary => "中医其他学科")
 
-ProductProp.create(:zh => "出版时间", :name => "pub_date")
-ProductProp.create(:zh => "开本", :name => "size")
-ProductProp.create(:zh => "页数", :name => "pages")
-
 NewsCategory.destroy_all
 
 nc = NewsCategory.create(:name => "新手指南")
@@ -64,4 +60,8 @@ NewsTopic.create(:news_category_id => nc.id, :title => "经典书社简介", :co
 NewsTopic.create(:news_category_id => nc.id, :title => "成为供货商", :content => "")
 NewsTopic.create(:news_category_id => nc.id, :title => "团购批发", :content => "")
 
+
+#ProductProp.create(:zh => "出版时间", :name => "pub_date")
+#ProductProp.create(:zh => "开本", :name => "size")
+#ProductProp.create(:zh => "页数", :name => "pages")
 

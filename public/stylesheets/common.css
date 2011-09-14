@@ -2,8 +2,8 @@
 body{margin:0;padding:0;font-size:12px;color:#333;text-align:center;font-family:SimSun;}
 form,ul,ul li,p{margin:0;padding:0;}
 ul, ul li{list-style:none;}
-a{color:#333;text-decoration:none;}
-a:hover{color:#ff2894;text-decoration:underline;}
+a{color:#0092D2;text-decoration:none;}
+a:hover{color:#fc4c0f;text-decoration:underline;}
 img{border:0px;}
 .clearfix:after {content:"."; display:block; height:0; clear:both; visibility:hidden; }
 * html>body .clearfix { display:inline-block; width:100%; }
@@ -19,36 +19,41 @@ input, option, select, textarea, button {font-size: 12px;}
 #wapper{margin:0 auto;width:998px;text-align:left;}
 
 #Header{height:90px;}
-	#logo{float:left;display:inline;margin:10px 0 0 20px;width:200px;height:60px;line-height:60px;text-align:center;border:1px solid #EEE;}
+	#logo{float:left;display:inline;margin:10px 0 0 20px;}
+	#logo img{width:173px;height:61px;}
+	#logo span{margin-left:60px;font-size:14px;font-weight:bold;color:#1fa8dd;}
 	.user_info{float:right;display:inline;}
 		.user_panel{height:30px;line-height:30px;}
 		.user_panel a{padding:0 8px;}
 		.user_account{padding-top:30px;text-align:right;}
 		.user_account a{padding:0 8px;}
 	
-#Nav{background:#999;padding:2px;}
-	.nav_l{float:left;display:inline;width:796px;background:#DDD;}
-	.nav_r{float:left;display:inline;width:196px;height:66px;border-left:2px solid #EEE;background:#FFF;}
+#Nav{background:#1fa8dd;padding:2px;}
+	.nav_l{float:left;display:inline;width:796px;background:#1fa8dd;}
+	.nav_r{float:left;display:inline;width:198px;height:66px;background:#FFF;}
 	.NavList{height:36px;}
 		.NavList li{float:left;display:inline;height:36px;line-height:36px;}
-		.NavList li.current{background:#CCC;}
-		.NavList li a{font-size:14px;font-weight:normal;color:#333;padding:0 28px;border-left:1px solid #CCC;}
-		.NavList li a:hover{color:#333;text-decoration:underline;}
+		.NavList li.current{}
+		.NavList li a{font-size:14px;font-weight:normal;color:#FFF;padding:0 28px;border-left:1px solid #F7F7F7;}
+		.NavList li a:hover{color:#FFF;text-decoration:underline;}
 		.NavList li.first a{border:0;}
-		.NavList li.current a{color:#FFF;font-weight:bold;}
+		.NavList li.current a{font-weight:bold;}
 		.NavList li.current a:hover{color:#FFF;text-decoration:none;}
-	.Search{height:30px;line-height:30px;background:#EEE;}
+	.Search{height:30px;line-height:30px;background:#f4fcff;}
 		.s_txt{float:left;display:inline;padding-left:10px;}
 			.s_txt input{padding:2px 4px;}
 		.hotkws{float:left;display:inline;margin-left:20px;}
-			.hotkws a{margin:0 6px;}
-	.nav_r p{line-height:32px;padding-left:10px;}
+			.hotkws span{font-weight:bold;}
+			.hotkws a{margin:0 6px;color:#444;}
+	.nav_r p{line-height:32px;padding-left:20px;}
 		
 
 #PageBody{height:auto !important;margin:auto;min-height:200px;text-align:left;padding-top:10px;}
 
-#HelpCenter{margin-top:18px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;background:#EEE;}
-.f_logo{float:left;display:inline;width:100px;height:100px;border:1px solid #E4E4E4;margin:10px 0 0 10px;}
+#HelpCenter{margin-top:18px;border-top:1px solid #CCC;border-bottom:1px solid #CCC;background:#F7F7F7;}
+.f_logo{float:left;display:inline;width:100px;height:90px;border:1px solid #E4E4E4;margin:10px 0 0 10px;text-align:center;padding-top:10px;}
+	.f_logo a{font-size:36px;font-weight:bold;font-family:Microsoft Yahei;color:#333;letter-spacing:2px;}
+	.f_logo a:hover{text-decoration:none;color:#333;}
 .help_ul{float:left;display:inline;margin-left:28px;}
 .help_li{float:left;display:inline;width:120px;height:180px;padding:28px 0 0 18px;border-left:1px solid #E4E4E4;}
 .help_t{font-size:12px;font-weight:bold;color:#333;}
@@ -58,5 +63,5 @@ input, option, select, textarea, button {font-size: 12px;}
 
 #Friendlinks{height:35px;line-height:35px;}
 
-#Footer{padding:20px 0;text-align:center;}
+#Footer{padding:20px 0;text-align:center;font-family:sans-serif;}
 
