@@ -27,6 +27,9 @@ Books::Application.routes.draw do
     post "doubans/q"
     get "doubans/douid"
     post "doubans/douid"
+    post "doubans/item"
+    match "doubans/item/(:id)" => "doubans#item"
+    post "doubans/save_product"
     get "doubans/index"
     post "doubans/index"
     resources :doubans

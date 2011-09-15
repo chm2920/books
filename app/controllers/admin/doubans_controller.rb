@@ -4,7 +4,7 @@ class Admin::DoubansController < Admin::AdminBackEndController
     if !params[:douban_ids].nil?
       Douban.destroy_all(["id in (?)", params[:douban_ids]])
     end
-    @doubans = Douban.paginate :page => params[:page], :per_page => 20
+    @doubans = Douban.paginate :page => params[:page], :per_page => 20, :order => 'id desc'
   end
 
   def new
@@ -80,10 +80,6 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @doubans
   end
   
-  def get_item(douid)
-    @douban
-  end
-  
   def tag
     case request.method
     when "POST"
@@ -111,15 +107,35 @@ class Admin::DoubansController < Admin::AdminBackEndController
   end
   
   def douid
-    case request.method
-    when "POST"
-      @douid = params[:douid]
-      private_key = "3b2c489f9b1c2c16"
-      api_key = "0595dd1222426c6510c1973666c7452f"
-      url = "http://api.douban.com/book/subject/#{@douid}&apikey=#{api_key}"
-      @douban = get_item(url)
-      render :item
-    end
+  end
+  
+  def item
+    @douid = params[:douid] || params[:id]
+    get_item(@douid)
+  end
+  
+  def get_item(douid)
+    require 'cgi'
+    require 'open-uri' 
+    private_key = "3b2c489f9b1c2c16"
+    api_key = "0595dd1222426c6510c1973666c7452f"
+    url = "http://api.douban.com/book/subject/#{douid}" 
+    @gets = open(url).read
+    @hsh = Hash.from_xml(@gets)
+    @entry = @hsh["entry"]
+    @douban = Douban.new
+    @douban.title = @entry["title"]
+    @douban.author = @entry["author"]
+    @douban.img = @entry["link"][2]["href"]
+    #@douban.summary = entry["summary"]
+    #@douban.attributes = entry["attribute"]
+    #@douban.tag = entry["tag"]
+    @douban.rating = @entry["rating"]["average"]
+    @douban.numRaters = @entry["rating"]["numRaters"]
+  end
+  
+  def save_product
+    render :text => "ok"
   end
   
 end
