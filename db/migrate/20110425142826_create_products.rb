@@ -12,16 +12,7 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :is_pub, :null => false, :default => 1
       t.integer :sold, :null => false, :default => 0
       t.integer :is_trash, :null => false, :default => 0
-      t.integer :douban_id
-      t.string :douban_category
-      t.string :douban_img
-        t.string :author
-        t.string :isbn10
-        t.string :isbn13
-        t.string :publisher
-        t.string :pubdate
-        t.string :rating
-        t.string :numRaters
+      t.integer :dou_id
 
       t.timestamps
     end

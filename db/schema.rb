@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110528154919) do
+ActiveRecord::Schema.define(:version => 20110915032634) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -50,6 +50,32 @@ ActiveRecord::Schema.define(:version => 20110528154919) do
     t.integer "node_id"
     t.string  "name"
     t.string  "summary"
+  end
+
+  create_table "doubans", :force => true do |t|
+    t.integer "dou_id"
+    t.string  "title"
+    t.string  "category"
+    t.string  "img"
+    t.string  "price"
+    t.string  "author"
+    t.string  "isbn10"
+    t.string  "isbn13"
+    t.string  "publisher"
+    t.string  "pubdate"
+    t.string  "rating"
+    t.string  "numRaters"
+    t.integer "is_in",     :default => 0
+  end
+
+  create_table "doubans_authors", :force => true do |t|
+    t.integer "douban_id"
+    t.integer "author_id"
+  end
+
+  create_table "doubans_tags", :force => true do |t|
+    t.integer "douban_id"
+    t.integer "tag_id"
   end
 
   create_table "flashpics", :force => true do |t|
@@ -101,42 +127,60 @@ ActiveRecord::Schema.define(:version => 20110528154919) do
     t.datetime "updated_at"
   end
 
-  create_table "product_properties", :force => true do |t|
+  create_table "pitems", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "product_items", :force => true do |t|
     t.integer "product_id"
+    t.integer "pitem_id"
     t.text    "val"
   end
 
   create_table "product_props", :force => true do |t|
-    t.string   "zh"
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.integer "property_category_id"
+    t.integer "property_id"
+    t.integer "product_id"
+    t.string  "val"
   end
 
   create_table "products", :force => true do |t|
     t.integer  "node_id"
     t.integer  "category_id"
-    t.integer  "author_id"
-    t.integer  "publish_id"
     t.string   "title"
     t.string   "image_file_name"
-    t.string   "old_price"
+    t.string   "sale_price"
     t.string   "price"
     t.integer  "num",             :default => 1, :null => false
     t.integer  "hits",            :default => 0, :null => false
-    t.text     "catalogs"
-    t.text     "summary"
-    t.text     "intro"
-    t.text     "property"
     t.integer  "is_pub",          :default => 1, :null => false
     t.integer  "sold",            :default => 0, :null => false
-    t.integer  "is_re",           :default => 0, :null => false
     t.integer  "is_trash",        :default => 0, :null => false
+    t.integer  "dou_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "publishes", :force => true do |t|
+  create_table "products_authors", :force => true do |t|
+    t.integer "product_id"
+    t.integer "author_id"
+  end
+
+  create_table "products_tags", :force => true do |t|
+    t.integer "product_id"
+    t.integer "tag_id"
+  end
+
+  create_table "properties", :force => true do |t|
+    t.integer "property_category_id"
+    t.string  "name"
+  end
+
+  create_table "property_categories", :force => true do |t|
+    t.string "name"
+  end
+
+  create_table "publishers", :force => true do |t|
     t.string "name"
     t.text   "intro"
   end
@@ -148,6 +192,10 @@ ActiveRecord::Schema.define(:version => 20110528154919) do
     t.string   "log_exception"
     t.string   "log_remote_ip"
     t.datetime "created_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string "name"
   end
 
   create_table "users", :force => true do |t|
