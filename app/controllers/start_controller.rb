@@ -1,4 +1,4 @@
-class StartController < ApplicationController
+class StartController < BaseController
   
   def index
     @new_products = Product.new_ps

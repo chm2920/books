@@ -1,4 +1,4 @@
-class ProductsController < ApplicationController
+class ProductsController < BaseController
   
   before_filter :find_side_data
   

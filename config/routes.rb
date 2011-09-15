@@ -21,6 +21,12 @@ Books::Application.routes.draw do
   match "admin_logout" => "account#logout"
 
   namespace :admin do
+    get "doubans/tag"
+    post "doubans/tag"
+    get "doubans/q"
+    post "doubans/q"
+    get "doubans/douid"
+    post "doubans/douid"
     get "doubans/index"
     post "doubans/index"
     resources :doubans

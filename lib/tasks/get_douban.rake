@@ -23,12 +23,6 @@ task(:get_douban => :environment) do
     category = item["category"]
     image = item["link"][2]["href"]
     
-    l = item["attribute"].length
-    if l>6
-      puts l
-      puts item["attribute"]
-    end
-    #puts item["attribute"]
     isbn10 = item["attribute"][0]
     isbn13 = item["attribute"][1]
     author = item["attribute"][2]
@@ -38,20 +32,20 @@ task(:get_douban => :environment) do
     
     rating = item["rating"]["average"]
     numRaters = item["rating"]["numRaters"]
-    # Douban.create(
-      # :dou_id => douban_id,
-      # :title => title,
-      # :category => category,
-      # :author => author,
-      # :img => image,
-      # :isbn10 => isbn10,
-      # :isbn13 => isbn13,
-      # :price => price,
-      # :publisher => publisher,
-      # :pubdate => pubdate,
-      # :rating => rating,
-      # :numRaters => numRaters
-    # )
+    Douban.create(
+      :dou_id => douban_id,
+      :title => title,
+      :category => category,
+      :author => author,
+      :img => image,
+      :isbn10 => isbn10,
+      :isbn13 => isbn13,
+      :price => price,
+      :publisher => publisher,
+      :pubdate => pubdate,
+      :rating => rating,
+      :numRaters => numRaters
+    )
   end
   
   # for t in entry[0].keys

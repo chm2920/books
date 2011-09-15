@@ -4,7 +4,7 @@ class Admin::DoubansController < Admin::AdminBackEndController
     if !params[:douban_ids].nil?
       Douban.destroy_all(["id in (?)", params[:douban_ids]])
     end
-    @doubans = Douban.all
+    @doubans = Douban.paginate :page => params[:page], :per_page => 20
   end
 
   def new
@@ -37,6 +37,89 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @douban = Douban.find(params[:id])
     @douban.destroy
     redirect_to :action => "index"
-  end 
+  end
+  
+  def get_douban(url)
+    @doubans = []
+    require 'cgi'
+    require 'open-uri'  
+    gets = open(url).read
+    hsh = Hash.from_xml(gets)
+    feed = hsh["feed"]
+    entry = feed["entry"]
+    for item in entry
+      douban_id = item["id"].split("/").last
+      title = item["title"]
+      category = item["category"]
+      image = item["link"][2]["href"]
+      
+      isbn10 = item["attribute"][0]
+      isbn13 = item["attribute"][1]
+      author = item["attribute"][2]
+      price = item["attribute"][3]
+      publisher = item["attribute"][4]
+      pubdate = item["attribute"][5]
+      
+      rating = item["rating"]["average"]
+      numRaters = item["rating"]["numRaters"]
+      @doubans << Douban.create(
+        :dou_id => douban_id,
+        :title => title,
+        :category => category,
+        :author => author,
+        :img => image,
+        :isbn10 => isbn10,
+        :isbn13 => isbn13,
+        :price => price,
+        :publisher => publisher,
+        :pubdate => pubdate,
+        :rating => rating,
+        :numRaters => numRaters
+      )
+    end
+    @doubans
+  end
+  
+  def get_item(douid)
+    @douban
+  end
+  
+  def tag
+    case request.method
+    when "POST"
+      @tag = params[:tag]
+      @tag = CGI::escape(@tag)
+      private_key = "3b2c489f9b1c2c16"
+      api_key = "0595dd1222426c6510c1973666c7452f"
+      url = "http://api.douban.com/book/subjects?tag=#{@tag}&start-index=1&max-results=50&apikey=#{api_key}"
+      @doubans = get_douban(url)
+      render :list
+    end
+  end
+  
+  def q
+    case request.method
+    when "POST"
+      @q = params[:q]
+      @q = CGI::escape(@q)
+      private_key = "3b2c489f9b1c2c16"
+      api_key = "0595dd1222426c6510c1973666c7452f"
+      url = "http://api.douban.com/book/subjects?q=#{@q}&start-index=1&max-results=50&apikey=#{api_key}"
+      @doubans = get_douban(url)
+      render :list
+    end
+  end
+  
+  def douid
+    case request.method
+    when "POST"
+      @douid = params[:douid]
+      private_key = "3b2c489f9b1c2c16"
+      api_key = "0595dd1222426c6510c1973666c7452f"
+      url = "http://api.douban.com/book/subject/#{@douid}&apikey=#{api_key}"
+      @douban = get_item(url)
+      render :item
+    end
+  end
   
 end

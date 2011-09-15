@@ -1,13 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   
-  before_filter :find_info
-  
-  def find_info    
-    @nodes = Node.all
-    @news_categories = NewsCategory.find(:all, :limit => 6)
-  end
-  
   def self.rescue_errors
     rescue_from Exception,                            :with => :render_error
     rescue_from RuntimeError,                         :with => :render_error
