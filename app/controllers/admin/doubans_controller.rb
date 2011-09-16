@@ -50,29 +50,17 @@ class Admin::DoubansController < Admin::AdminBackEndController
     for item in entry
       douban_id = item["id"].split("/").last
       title = item["title"]
-      category = item["category"]
       image = item["link"][2]["href"]
-      
-      isbn10 = item["attribute"][0]
-      isbn13 = item["attribute"][1]
-      author = item["attribute"][2]
-      price = item["attribute"][3]
-      publisher = item["attribute"][4]
-      pubdate = item["attribute"][5]
-      
+      author = item["author"]
+      attributes = item["attribute"]      
       rating = item["rating"]["average"]
       numRaters = item["rating"]["numRaters"]
       @doubans << Douban.create(
         :dou_id => douban_id,
         :title => title,
-        :category => category,
-        :author => author,
         :img => image,
-        :isbn10 => isbn10,
-        :isbn13 => isbn13,
-        :price => price,
-        :publisher => publisher,
-        :pubdate => pubdate,
+        :author => author,
+        :attributes => attributes,
         :rating => rating,
         :numRaters => numRaters
       )
@@ -124,12 +112,13 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @hsh = Hash.from_xml(@gets)
     @entry = @hsh["entry"]
     @douban = Douban.new
+    @douban.dou_id = @entry["id"].split("/").last
     @douban.title = @entry["title"]
-    @douban.author = @entry["author"]
     @douban.img = @entry["link"][2]["href"]
-    #@douban.summary = entry["summary"]
-    #@douban.attributes = entry["attribute"]
-    #@douban.tag = entry["tag"]
+    @douban.summary = @entry["summary"]
+    @douban.author = @entry["author"]
+    @douban.attrs = @entry["attribute"]
+    @douban.tag = @entry["tag"]
     @douban.rating = @entry["rating"]["average"]
     @douban.numRaters = @entry["rating"]["numRaters"]
   end

@@ -1,0 +1,70 @@
+<table align="CENTER" width="100%" border="0" cellspacing="0" cellpadding="0" class="main">
+	<tr>
+		<td align="left" height="30" class="data_td_bg">
+			&nbsp;&nbsp;&nbsp;管理导航：&nbsp;&nbsp;<a href="/admin/doubans/index">豆瓣管理</a>
+		</td>
+	</tr>
+</table>
+<table align="CENTER" width="100%" border="0" cellspacing="0" cellpadding="0">
+	<tr>
+		<td align="CENTER" valign="MIDDLE">&nbsp;</td>
+	</tr>
+</table>
+<%= form_tag '/admin/doubans/save_product' do |f| %>
+<table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="#CCCCCC">
+	<tr>
+		<td class="top-nav" bgcolor="#2E9AC8" height="28" colspan="2">&nbsp;&nbsp;&nbsp;<img src="/images/admin/arr_right.gif">&nbsp;&nbsp;
+		<strong><%= @douban.title %></strong></td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">GET：</td>
+		<td class="data_td_text"><textarea name="gets" style="width:700px;height:400px;"><%= @gets %></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">Title：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.title %>" name="product[title]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">Author：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.author %>" name="product[author]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">img：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.img %>" name="product[img]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">summary：</td>
+		<td class="data_td_text"><input type="text" value="<%#= @douban.summary %>" name="product[summary]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">attributes：</td>
+		<td class="data_td_text"><input type="text" value="<%#= @douban.attributes %>" name="product[attributes]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">tag：</td>
+		<td class="data_td_text"><input type="text" value="<%#= @douban.tag %>" name="product[tag]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">rating：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.rating %>" name="product[rating]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">numRaters：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.numRaters %>" name="product[numRaters]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		</td>
+	</tr>
+	<tr>
+		<td bgcolor="#FFFFFF" colspan="2" align="CENTER" height="30">
+			<input type="submit" name="submit" value="提交" class="btn_ok">
+		</td>
+	</tr>
+</table>
+<% end %>

@@ -21,10 +21,10 @@
 					<td class="data_td_label" width="5%" align="CENTER">ID</td>
 					<td class="data_td_label" width="10%" align="CENTER">dou_id</td>
 					<td class="data_td_label" align="CENTER">名称</td>
-					<td class="data_td_label" width="10%" align="CENTER">author</td>
-					<td class="data_td_label" width="10%" align="CENTER">price</td>
-					<td class="data_td_label" width="10%" align="CENTER">publisher</td>
-					<td class="data_td_label" width="10%" align="CENTER">pubdate</td>
+					<td class="data_td_label" width="15%" align="CENTER">Author</td>
+					<td class="data_td_label" width="10%" align="CENTER">Tag</td>
+					<td class="data_td_label" width="10%" align="CENTER">rating</td>
+					<td class="data_td_label" width="10%" align="CENTER">numRaters</td>
 					<td class="data_td_label" width="6%" align="CENTER">is-in</td>
 					<td class="data_td_label" width="10%" align="CENTER">管理</td>
 				</tr>
@@ -40,11 +40,11 @@
 				<tr class="data_tr" onmouseover="this.style.backgroundColor='#F4E088';this.style.borderColor='#003c9c';this.style.cursor='default';" onmouseout="this.style.backgroundColor='';this.style.borderColor='';">
 					<td align="CENTER"><%= check_box_tag 'douban_ids[]', douban.id %></td>
 					<td align="CENTER"><%= douban.dou_id %></td>
-					<td align="CENTER"><%= douban.title %></td>
+					<td align="CENTER"><a href="http://book.douban.com/subject/<%= douban.dou_id %>/" target="_blank"><%= douban.title %></a></td>
 					<td align="CENTER"><%= douban.author %></td>
-					<td align="CENTER"><%= douban.price %></td>
-					<td align="CENTER"><%= douban.publisher %></td>
-					<td align="CENTER"><%= douban.pubdate %></td>
+					<td align="CENTER"><%= douban.tag %></td>
+					<td align="CENTER"><%= douban.rating %></td>
+					<td align="CENTER"><%= douban.numRaters %></td>
 					<td align="CENTER"><% if douban.is_in==1 %><b style="color:#FF0000;">已加入</b><% else %><%= douban.is_in %><% end %></td>
 					<td align="CENTER">
 						<% if douban.is_in==0 %><a href="/admin/doubans/item/<%= douban.dou_id %>">加入</a>&nbsp;|&nbsp;<% end %><%= link_to "删除", {:action => "destroy", :id => douban}, :confirm => "确定删除？", :method => "delete" %>

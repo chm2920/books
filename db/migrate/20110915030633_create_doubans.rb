@@ -3,14 +3,11 @@ class CreateDoubans < ActiveRecord::Migration
     create_table :doubans do |t|
       t.integer :dou_id
       t.string :title
-      t.string :category
       t.string :img
-      t.string :price
+      t.text :summary
       t.string :author
-      t.string :isbn10
-      t.string :isbn13
-      t.string :publisher
-      t.string :pubdate
+      t.string :tag
+      t.text :attrs
       t.string :rating
       t.string :numRaters
       t.integer :is_in, :default => 0

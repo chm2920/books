@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PitemTest < ActiveSupport::TestCase
+class AttrTest < ActiveSupport::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

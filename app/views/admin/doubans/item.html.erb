@@ -22,13 +22,23 @@
 		</td>
 	</tr>
 	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">Title：</td>
-		<td class="data_td_text"><input type="text" value="<%= @douban.title %>" name="product[title]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_label" width="15%" align="RIGHT">Author：</td>
+		<td class="data_td_text"><textarea name="author" style="width:700px;height:60px;"><%= @douban.author %></textarea>
 		</td>
 	</tr>
 	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">Author：</td>
-		<td class="data_td_text"><input type="text" value="<%= @douban.author %>" name="product[author]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_label" width="15%" align="RIGHT">Tag：</td>
+		<td class="data_td_text"><textarea name="tag" style="width:700px;height:60px;"><%= @douban.tag %></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">Attrs：</td>
+		<td class="data_td_text"><textarea name="attrs" style="width:700px;height:60px;"><%= @douban.attrs %></textarea>
+		</td>
+	</tr>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">Title：</td>
+		<td class="data_td_text"><input type="text" value="<%= @douban.title %>" name="product[title]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
 		</td>
 	</tr>
 	<tr>
@@ -38,17 +48,8 @@
 	</tr>
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">summary：</td>
-		<td class="data_td_text"><input type="text" value="<%#= @douban.summary %>" name="product[summary]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
-		</td>
-	</tr>
-	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">attributes：</td>
-		<td class="data_td_text"><input type="text" value="<%#= @douban.attributes %>" name="product[attributes]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
-		</td>
-	</tr>
-	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">tag：</td>
-		<td class="data_td_text"><input type="text" value="<%#= @douban.tag %>" name="product[tag]" id="product_title" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_text">
+			<textarea name="douban[summary]" id="douban_summary" style="width:700px;height:60px;"><%= @douban.summary %></textarea>
 		</td>
 	</tr>
 	<tr>

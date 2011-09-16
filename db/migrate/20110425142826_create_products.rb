@@ -7,9 +7,10 @@ class CreateProducts < ActiveRecord::Migration
       t.string :image_file_name
       t.string :sale_price
       t.string :price
+      t.text :summary
       t.integer :num, :null => false, :default => 1
       t.integer :hits, :null => false, :default => 0
-      t.integer :is_pub, :null => false, :default => 1
+      t.integer :is_pub, :null => false, :default => 0
       t.integer :sold, :null => false, :default => 0
       t.integer :is_trash, :null => false, :default => 0
       t.integer :dou_id

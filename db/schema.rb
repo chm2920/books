@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110915032634) do
+ActiveRecord::Schema.define(:version => 20110916151559) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -25,6 +25,10 @@ ActiveRecord::Schema.define(:version => 20110915032634) do
     t.string   "password"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "attrs", :force => true do |t|
+    t.string "name"
   end
 
   create_table "authors", :force => true do |t|
@@ -55,27 +59,14 @@ ActiveRecord::Schema.define(:version => 20110915032634) do
   create_table "doubans", :force => true do |t|
     t.integer "dou_id"
     t.string  "title"
-    t.string  "category"
     t.string  "img"
-    t.string  "price"
+    t.text    "summary"
     t.string  "author"
-    t.string  "isbn10"
-    t.string  "isbn13"
-    t.string  "publisher"
-    t.string  "pubdate"
+    t.string  "tag"
+    t.text    "attrs"
     t.string  "rating"
     t.string  "numRaters"
     t.integer "is_in",     :default => 0
-  end
-
-  create_table "doubans_authors", :force => true do |t|
-    t.integer "douban_id"
-    t.integer "author_id"
-  end
-
-  create_table "doubans_tags", :force => true do |t|
-    t.integer "douban_id"
-    t.integer "tag_id"
   end
 
   create_table "flashpics", :force => true do |t|
@@ -127,14 +118,10 @@ ActiveRecord::Schema.define(:version => 20110915032634) do
     t.datetime "updated_at"
   end
 
-  create_table "pitems", :force => true do |t|
-    t.string "name"
-  end
-
-  create_table "product_items", :force => true do |t|
+  create_table "product_attrs", :force => true do |t|
     t.integer "product_id"
-    t.integer "pitem_id"
-    t.text    "val"
+    t.integer "attr_id"
+    t.string  "val"
   end
 
   create_table "product_props", :force => true do |t|
@@ -151,9 +138,10 @@ ActiveRecord::Schema.define(:version => 20110915032634) do
     t.string   "image_file_name"
     t.string   "sale_price"
     t.string   "price"
+    t.text     "summary"
     t.integer  "num",             :default => 1, :null => false
     t.integer  "hits",            :default => 0, :null => false
-    t.integer  "is_pub",          :default => 1, :null => false
+    t.integer  "is_pub",          :default => 0, :null => false
     t.integer  "sold",            :default => 0, :null => false
     t.integer  "is_trash",        :default => 0, :null => false
     t.integer  "dou_id"
