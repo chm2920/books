@@ -51,8 +51,17 @@ class Admin::DoubansController < Admin::AdminBackEndController
       douban_id = item["id"].split("/").last
       title = item["title"]
       image = item["link"][2]["href"]
-      author = item["author"]
-      attributes = item["attribute"]      
+      arr = []
+      if item["author"]
+        if item["author"].length > 1
+          for t in item["author"]
+            arr << t["name"]
+          end
+        else
+          arr << item["author"]["name"]
+        end
+      end
+      author = arr.join("###")
       rating = item["rating"]["average"]
       numRaters = item["rating"]["numRaters"]
       @doubans << Douban.create(
@@ -60,7 +69,6 @@ class Admin::DoubansController < Admin::AdminBackEndController
         :title => title,
         :img => image,
         :author => author,
-        :attributes => attributes,
         :rating => rating,
         :numRaters => numRaters
       )
@@ -103,12 +111,30 @@ class Admin::DoubansController < Admin::AdminBackEndController
   end
   
   def get_item(douid)
-    require 'cgi'
-    require 'open-uri' 
-    private_key = "3b2c489f9b1c2c16"
-    api_key = "0595dd1222426c6510c1973666c7452f"
-    url = "http://api.douban.com/book/subject/#{douid}" 
-    @gets = open(url).read
+    @douban = Douban.find_by_dou_id(douid)
+    if !@douban.nil?
+      if @douban.gets
+        @gets = @douban.gets
+        puts "get from database"
+      else
+        require 'cgi'
+        require 'open-uri' 
+        private_key = "3b2c489f9b1c2c16"
+        api_key = "0595dd1222426c6510c1973666c7452f"
+        url = "http://api.douban.com/book/subject/#{douid}" 
+        @gets = open(url).read
+        @douban.gets = @gets
+        @douban.save
+        puts "get from url"
+      end      
+    else
+      require 'cgi'
+      require 'open-uri' 
+      private_key = "3b2c489f9b1c2c16"
+      api_key = "0595dd1222426c6510c1973666c7452f"
+      url = "http://api.douban.com/book/subject/#{douid}" 
+      @gets = open(url).read
+    end
     @hsh = Hash.from_xml(@gets)
     @entry = @hsh["entry"]
     @douban = Douban.new
@@ -116,11 +142,42 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @douban.title = @entry["title"]
     @douban.img = @entry["link"][2]["href"]
     @douban.summary = @entry["summary"]
-    @douban.author = @entry["author"]
-    @douban.attrs = @entry["attribute"]
-    @douban.tag = @entry["tag"]
     @douban.rating = @entry["rating"]["average"]
     @douban.numRaters = @entry["rating"]["numRaters"]
+    @price = ""
+    @gets.scan(/<db:attribute name="price">(.*?)<\/db/m) do |p|
+      @price = p[0].to_s
+    end
+    @publisher = ""
+    @gets.scan(/<db:attribute name="publisher">(.*?)<\/db/m) do |p|
+      @publisher = p[0].to_s
+    end
+    arr = []
+    if @entry["author"]
+      if @entry["author"].length > 1
+        for t in @entry["author"]
+          arr << t["name"]
+        end
+      else
+        arr << @entry["author"]["name"]
+      end
+    end
+    @author = arr.join("###")
+    arr = []
+    if @entry["tag"]
+      if @entry["tag"].length > 1
+        for t in @entry["tag"]
+          arr << t["name"]
+        end
+      else
+        arr << @entry["tag"]["name"]
+      end
+    end
+    arr = []
+    @gets.scan(/db:tag count="(.*?)" name="(.*?)"/) do |t, m|
+      arr << m
+    end
+    @tag = arr.join("###")    
   end
   
   def save_product
@@ -128,6 +185,36 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @product.node_id = 1
     @product.category_id = 1
     @product.save
+    if params[:publisher]
+      @publisher = Publisher.find_by_name(params[:publisher])
+      if @publisher.nil?
+        @publisher = Publisher.new
+        @publisher.name = params[:publisher]
+        @publisher.save
+      end
+    end
+    if params[:author]
+      authors = params[:author].split('###')
+      for t in authors
+        @author = Author.find_by_name(t)
+        if @author.nil?
+          @author = Author.new
+          @author.name = t
+          @author.save
+        end
+      end
+    end
+    if params[:tag]
+      tags = params[:tag].split('###')
+      for t in tags
+        @tag = Tag.find_by_name(t)
+        if @tag.nil?
+          @tag = Tag.new
+          @tag.name = t
+          @tag.save
+        end
+      end
+    end
     redirect_to :action => "index"
   end
   

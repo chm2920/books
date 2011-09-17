@@ -7,7 +7,7 @@ class CreateDoubans < ActiveRecord::Migration
       t.text :summary
       t.string :author
       t.string :tag
-      t.text :attrs
+      t.text :gets
       t.string :rating
       t.string :numRaters
       t.integer :is_in, :default => 0

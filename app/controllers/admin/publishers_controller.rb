@@ -16,7 +16,7 @@ class Admin::PublishersController < Admin::AdminBackEndController
   end
   
   def create
-    @publisher = Publisher.new(params[:publish])
+    @publisher = Publisher.new(params[:publisher])
     if @publisher.save
       redirect_to :action => "index"
     else
@@ -26,7 +26,7 @@ class Admin::PublishersController < Admin::AdminBackEndController
 
   def update
     @publisher = Publisher.find(params[:id])
-    if @publisher.update_attributes(params[:publish])
+    if @publisher.update_attributes(params[:publisher])
       redirect_to :action => "index"
     else
       render :action => "edit"

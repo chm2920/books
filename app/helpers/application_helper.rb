@@ -3,7 +3,7 @@ module ApplicationHelper
   
   def show_price(num)
     if num
-      "￥" + "%.2f" % num
+      num #"￥" + "%.2f" % num
     else
       "未标价"
     end
@@ -11,7 +11,7 @@ module ApplicationHelper
   
   def show_price_f(num)
     if num
-     "￥" + "%.2f" % num + " 元" 
+     num #"￥" + "%.2f" % num + " 元" 
    else
      "未标价"
    end

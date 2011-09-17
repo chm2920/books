@@ -21,6 +21,11 @@ Books::Application.routes.draw do
   match "admin_logout" => "account#logout"
 
   namespace :admin do
+    
+    get "attrs/index"
+    post "attrs/index"
+    resources :attrs
+    
     get "doubans/tag"
     post "doubans/tag"
     get "doubans/q"
@@ -42,13 +47,17 @@ Books::Application.routes.draw do
     post "products/index"
     resources :products
     
-    get "publishes/index"
-    post "publishes/index"
-    resources :publishes
+    get "publishers/index"
+    post "publishers/index"
+    resources :publishers
     
     get "authors/index"
     post "authors/index"
     resources :authors
+    
+    get "tags/index"
+    post "tags/index"
+    resources :tags
     
     get "news_categories/index"
     post "news_categories/index"
@@ -92,6 +101,7 @@ Books::Application.routes.draw do
 
   root :to => "start#index"
   
+  match "admin/*path" => "application#render_not_found_admin"
   match "*path" => "application#render_not_found"
   
 end

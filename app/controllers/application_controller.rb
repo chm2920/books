@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
     render :template => "errors/404", :status => 404, :layout => "application"
   end
   
+  def render_not_found_admin(exception=nil)
+    record_error(params[:path])
+    render :template => "errors/404", :status => 404, :layout => "admin_back_end"
+  end
+  
   def render_error(exception)
     record_error(exception)
     render :template => "errors/500", :status => 500, :layout => "application"
