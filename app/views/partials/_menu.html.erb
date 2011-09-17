@@ -17,7 +17,7 @@
 		<div class="an_cat" style="border:0;">
 			<div class="an_cat_title">按出版社</div>
 			<ul class="publish_cat">
-			<% for pub in @publishes %>
+			<% for pub in @publishers %>
 				<li><a href="<%= pub.show_url %>"><%= pub.name %></a></li>
 			<% end %>
 			</ul>

@@ -124,7 +124,11 @@ class Admin::DoubansController < Admin::AdminBackEndController
   end
   
   def save_product
-    render :text => "ok"
+    @product = Product.new(params[:product])
+    @product.node_id = 1
+    @product.category_id = 1
+    @product.save
+    redirect_to :action => "index"
   end
   
 end

@@ -8,9 +8,9 @@
 	<ul class="ps clearfix">
 		<% 0.upto @new_products.length-1 do |i| %>
 		<li<% if i%5==0 %> class="first"<% end %>>
-			<div class="p_img"><a href="<%= @new_products[i].show_url %>"><img src="<%= @new_products[i].image %>" /></a></div>
+			<div class="p_img"><a href="<%= @new_products[i].show_url %>"><img src="<%= @new_products[i].image_path %>" /></a></div>
 			<div class="p_title"><a href="<%= @new_products[i].show_url %>">《<%= @new_products[i].title %>》</a></div>
-			<div class="p_price"><span class="old"><%= show_price(@new_products[i].old_price) %></span>→<span class="new"><%= show_price(@new_products[i].price) %></span></div>
+			<div class="p_price"><span class="old"><%= show_price(@new_products[i].sale_price) %></span>→<span class="new"><%= show_price(@new_products[i].price) %></span></div>
 		</li>
 		<% end %>
 	</ul>
@@ -22,9 +22,9 @@
 	<ul class="ps clearfix">
 		<% 0.upto @re_products.length-1 do |i| %>
 		<li<% if i%5==0 %> class="first"<% end %>>
-			<div class="p_img"><a href="<%= @re_products[i].show_url %>"><img src="<%= @re_products[i].image %>" /></a></div>
+			<div class="p_img"><a href="<%= @re_products[i].show_url %>"><img src="<%= @re_products[i].image_path %>" /></a></div>
 			<div class="p_title"><a href="<%= @re_products[i].show_url %>">《<%= @re_products[i].title %>》</a></div>
-			<div class="p_price"><span class="old"><%= show_price(@re_products[i].old_price) %></span>→<span class="new"><%= show_price(@re_products[i].price) %></span></div>
+			<div class="p_price"><span class="old"><%= show_price(@re_products[i].sale_price) %></span>→<span class="new"><%= show_price(@re_products[i].price) %></span></div>
 		</li>
 		<% end %>
 	</ul>

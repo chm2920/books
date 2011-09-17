@@ -145,6 +145,8 @@ ActiveRecord::Schema.define(:version => 20110916151559) do
     t.integer  "sold",            :default => 0, :null => false
     t.integer  "is_trash",        :default => 0, :null => false
     t.integer  "dou_id"
+    t.integer  "rating"
+    t.integer  "numRaters"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

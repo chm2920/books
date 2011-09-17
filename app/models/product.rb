@@ -2,8 +2,7 @@ class Product < ActiveRecord::Base
   
   belongs_to :node
   belongs_to :category
-  belongs_to :author
-  belongs_to :publish
+  
   has_many :cart_items
   has_many :order_items
   
@@ -25,6 +24,11 @@ class Product < ActiveRecord::Base
   
   def self.re_ps
     find(:all, :limit => 10, :order => "id desc")
+  end
+  
+  def image_path
+    # spic mpic lpic
+    self.image_file_name.gsub('spic', 'lpic')
   end
   
   def show_url

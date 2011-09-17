@@ -25,17 +25,17 @@
 	</div>
 	<div class="product_info clearfix">
 		<div class="ps_img">
-			<a href="<%= @product.image %>" title="查看大图"><img src="<%= @product.image %>" alt="<%= @product.title %>" /></a>
+			<a href="<%= @product.image_path %>" title="查看大图"><img src="<%= @product.image_path %>" alt="<%= @product.title %>" /></a>
 		</div>
 		<div class="ps_detail">
 			<div class="ps_t"><%= @product.title %></div>
-			<div class="ps_i"><span>作者：</span><%= @product.author.name %></div>
-			<div class="ps_i"><span>出版社：</span><%= @product.publish.name %></div>
-			<% for prop in @props %>
-			<div class="ps_i"><span><%= prop.zh %>：</span><%= @property[prop.name] %></div>
-			<% end %>
+			<div class="ps_i"><span>作者：</span><%#= @product.author.name %></div>
+			<div class="ps_i"><span>出版社：</span><%#= @product.publish.name %></div>
+			<%# for prop in @props %>
+			<div class="ps_i"><span><%#= prop.zh %>：</span><%#= @property[prop.name] %></div>
+			<%# end %>
 			<div class="ps_i"><span>库存：</span><%= @product.num %></div>
-			<div class="ps_i"><span>定价：</span><%= show_price_f(@product.old_price) %></div>
+			<div class="ps_i"><span>定价：</span><%= show_price_f(@product.sale_price) %></div>
 			<div class="ps_i"><span>售价：</span><%= show_price_f(@product.price) %></div>
 			<div class="ps_ch">
 				<div class="ps_ch_btn">
@@ -48,14 +48,14 @@
 	</div>
 	<div class="product_intro">
 		<div class="product_intro_t"><%= @product.title %> 内容简介</div>
-		<div class="product_intro_c"><%= simple_format @product.intro %></div>
+		<div class="product_intro_c"><%= simple_format @product.summary %></div>
 	</div>
 	<div class="product_intro">
 		<div class="product_intro_t"><%= @product.title %> 目录</div>
-		<div class="product_intro_c"><%= simple_format @product.catalogs %></div>
+		<div class="product_intro_c"><%#= simple_format @product.catalogs %></div>
 	</div>
 	<div class="product_intro">
 		<div class="product_intro_t"><%= @product.title %> 资料</div>
-		<div class="product_intro_c"><%= @product.summary %></div>
+		<div class="product_intro_c"><%#= @product.summary %></div>
 	</div>
 </div>

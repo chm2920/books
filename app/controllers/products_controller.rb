@@ -25,8 +25,6 @@ class ProductsController < BaseController
   
   def show
     @product = Product.find(params[:id])
-    @props = ProductProp.all
-    @property = Hash.from_xml(@product.property)["hash"]
     @category = @product.category
     @node = @category.node
   end
@@ -34,7 +32,7 @@ class ProductsController < BaseController
 private
   
   def find_side_data
-    @publishes = Publish.all
+    @publishers = Publisher.all
     @authors = Author.all
   end
   

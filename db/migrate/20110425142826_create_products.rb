@@ -14,6 +14,8 @@ class CreateProducts < ActiveRecord::Migration
       t.integer :sold, :null => false, :default => 0
       t.integer :is_trash, :null => false, :default => 0
       t.integer :dou_id
+      t.integer :rating
+      t.integer :numRaters
 
       t.timestamps
     end
