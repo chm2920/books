@@ -13,14 +13,14 @@ class ProductsController < BaseController
     @ps = Product.paginate :page => params[:page], :per_page => 20, :conditions => ["category_id = ?", @category.id], :order => "id desc"
   end
   
-  def publish
-    @publish = Publish.find(params[:id])
-    @ps = Product.paginate :page => params[:page], :per_page => 20, :conditions => ["publish_id = ?", @publish.id], :order => "id desc"
+  def publisher
+    @publisher = Publisher.find(params[:id])
+    @ps = @publisher.products.paginate :page => params[:page], :per_page => 20, :order => "id desc"
   end
   
   def author
     @author = Author.find(params[:id])
-    @ps = Product.paginate :page => params[:page], :per_page => 20, :conditions => ["author_id = ?", @author.id], :order => "id desc"
+    @ps = @author.products.paginate :page => params[:page], :per_page => 20, :order => "id desc"
   end
   
   def show
@@ -33,8 +33,8 @@ class ProductsController < BaseController
 private
   
   def find_side_data
-    @publishers = Publisher.all
-    @authors = Author.all
+    @publishers = Publisher.all(:limit => 10)
+    @authors = Author.all(:limit => 10)
   end
   
 end

@@ -5,7 +5,7 @@ Books::Application.routes.draw do
   match "n/(:id)" => "products#node"
   match "c/(:id)" => "products#category"
   match "p/(:id)" => "products#show"
-  match "publish/(:id)" => "products#publish"
+  match "publisher/(:id)" => "products#publisher"
   match "author/(:id)" => "products#author"
   
   match "login" => "users#login"
