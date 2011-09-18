@@ -39,7 +39,7 @@
 				</tr>
 				<tr class="data_tr" onmouseover="this.style.backgroundColor='#F4E088';this.style.borderColor='#003c9c';this.style.cursor='default';" onmouseout="this.style.backgroundColor='';this.style.borderColor='';">
 					<td align="CENTER"><%= check_box_tag 'douban_ids[]', douban.id %></td>
-					<td align="CENTER"><%= douban.dou_id %></td>
+					<td align="CENTER"><% if douban.gets %><font color="#FF0000"><%= douban.dou_id %></font><% else %><%= douban.dou_id %><% end %></td>
 					<td align="CENTER"><a href="http://book.douban.com/subject/<%= douban.dou_id %>/" target="_blank"><%= douban.title %></a></td>
 					<td align="CENTER"><%= douban.author %></td>
 					<td align="CENTER"><%= douban.tag %></td>

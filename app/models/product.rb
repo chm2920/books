@@ -6,6 +6,13 @@ class Product < ActiveRecord::Base
   has_many :cart_items
   has_many :order_items
   
+  has_and_belongs_to_many :authors
+  has_and_belongs_to_many :tags
+  
+  has_many :product_attrs
+  
+  has_many :publisher_products, :dependent => :destroy
+  
   has_attached_file :image,
     :styles => {  
       :big => {
@@ -33,6 +40,14 @@ class Product < ActiveRecord::Base
   
   def show_url
     "/p/#{self.id}"
+  end
+  
+  def author
+    if self.authors
+      self.authors.map{|a|a.name}.join(' ')
+    else
+      ""
+    end
   end
   
 end

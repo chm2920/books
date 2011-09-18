@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110916151559) do
+ActiveRecord::Schema.define(:version => 20110918032139) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,11 @@ ActiveRecord::Schema.define(:version => 20110916151559) do
   create_table "authors", :force => true do |t|
     t.string "name"
     t.text   "intro"
+  end
+
+  create_table "authors_products", :id => false, :force => true do |t|
+    t.integer "author_id"
+    t.integer "product_id"
   end
 
   create_table "cart_items", :force => true do |t|
@@ -151,12 +156,7 @@ ActiveRecord::Schema.define(:version => 20110916151559) do
     t.datetime "updated_at"
   end
 
-  create_table "products_authors", :force => true do |t|
-    t.integer "product_id"
-    t.integer "author_id"
-  end
-
-  create_table "products_tags", :force => true do |t|
+  create_table "products_tags", :id => false, :force => true do |t|
     t.integer "product_id"
     t.integer "tag_id"
   end
@@ -168,6 +168,11 @@ ActiveRecord::Schema.define(:version => 20110916151559) do
 
   create_table "property_categories", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "publisher_products", :force => true do |t|
+    t.integer "publisher_id"
+    t.integer "product_id"
   end
 
   create_table "publishers", :force => true do |t|

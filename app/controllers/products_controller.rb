@@ -25,6 +25,7 @@ class ProductsController < BaseController
   
   def show
     @product = Product.find(params[:id])
+    @attrs = Attr.all
     @category = @product.category
     @node = @category.node
   end

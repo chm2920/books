@@ -64,14 +64,16 @@ class Admin::DoubansController < Admin::AdminBackEndController
       author = arr.join("###")
       rating = item["rating"]["average"]
       numRaters = item["rating"]["numRaters"]
-      @doubans << Douban.create(
-        :dou_id => douban_id,
-        :title => title,
-        :img => image,
-        :author => author,
-        :rating => rating,
-        :numRaters => numRaters
-      )
+      if !Douban.find_by_dou_id(douban_id)
+        @doubans << Douban.create(
+          :dou_id => douban_id,
+          :title => title,
+          :img => image,
+          :author => author,
+          :rating => rating,
+          :numRaters => numRaters
+        )
+      end
     end
     @doubans
   end
@@ -83,7 +85,7 @@ class Admin::DoubansController < Admin::AdminBackEndController
       @tag = CGI::escape(@tag)
       private_key = "3b2c489f9b1c2c16"
       api_key = "0595dd1222426c6510c1973666c7452f"
-      url = "http://api.douban.com/book/subjects?tag=#{@tag}&start-index=1&max-results=50&apikey=#{api_key}"
+      url = "http://api.douban.com/book/subjects?tag=#{@tag}&start-index=50&max-results=50&apikey=#{api_key}"
       @doubans = get_douban(url)
       render :list
     end
@@ -135,6 +137,7 @@ class Admin::DoubansController < Admin::AdminBackEndController
       url = "http://api.douban.com/book/subject/#{douid}" 
       @gets = open(url).read
     end
+    
     @hsh = Hash.from_xml(@gets)
     @entry = @hsh["entry"]
     @douban = Douban.new
@@ -144,6 +147,7 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @douban.summary = @entry["summary"]
     @douban.rating = @entry["rating"]["average"]
     @douban.numRaters = @entry["rating"]["numRaters"]
+    
     @price = ""
     @gets.scan(/<db:attribute name="price">(.*?)<\/db/m) do |p|
       @price = p[0].to_s
@@ -177,7 +181,24 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @gets.scan(/db:tag count="(.*?)" name="(.*?)"/) do |t, m|
       arr << m
     end
-    @tag = arr.join("###")    
+    @tag = arr.join("###")
+    
+    @author_intro = ""
+    @gets.scan(/<db:attribute name="author-intro">(.*?)<\/db:attribute>/m) do |m|
+      @author_intro = m[0].to_s
+    end
+    
+    @attrs = Attr.all
+    @product_attrs = {}
+    for attr in @attrs
+      @gets.scan(/<db:attribute name="#{attr.name}">(.*?)<\/db:attribute>/m) do |m|
+        if @product_attrs[attr.name]
+          @product_attrs[attr.name] += '###' + m[0].to_s
+        else
+          @product_attrs[attr.name] = m[0].to_s
+        end
+      end
+    end
   end
   
   def save_product
@@ -185,27 +206,38 @@ class Admin::DoubansController < Admin::AdminBackEndController
     @product.node_id = 1
     @product.category_id = 1
     @product.save
-    if params[:publisher]
-      @publisher = Publisher.find_by_name(params[:publisher])
+    if params[:re_publisher] and params[:re_publisher]!=""
+      @publisher = Publisher.find_by_name(params[:re_publisher])
       if @publisher.nil?
         @publisher = Publisher.new
-        @publisher.name = params[:publisher]
+        @publisher.name = params[:re_publisher]
         @publisher.save
       end
+      if !@publisher.products.include?(@product)
+        @publisher.products << @product
+      end
     end
-    if params[:author]
-      authors = params[:author].split('###')
+    if params[:re_author] and params[:re_author]!=""
+      authors = params[:re_author].split('###') 
+      @author_intro = ""
+      if params[:author_intro]
+        @author_intro = params[:author_intro]
+      end
       for t in authors
         @author = Author.find_by_name(t)
         if @author.nil?
           @author = Author.new
           @author.name = t
+          @author.intro = @author_intro
           @author.save
+        end
+        if !@product.authors.include?(@author)
+          @product.authors << @author
         end
       end
     end
-    if params[:tag]
-      tags = params[:tag].split('###')
+    if params[:re_tag] and params[:re_tag]!=""
+      tags = params[:re_tag].split('###')
       for t in tags
         @tag = Tag.find_by_name(t)
         if @tag.nil?
@@ -213,9 +245,18 @@ class Admin::DoubansController < Admin::AdminBackEndController
           @tag.name = t
           @tag.save
         end
+        if !@product.tags.include?(@tag)
+          @product.tags << @tag
+        end
       end
     end
-    redirect_to :action => "index"
+    attrs = Attr.all
+    for attr in attrs
+      if params[attr.name.to_sym]
+        ProductAttr.create(:product_id => @product.id, :attr_id => attr.id, :val => params[attr.name.to_sym])
+      end
+    end
+    redirect_to :action => "index"   
   end
   
 end

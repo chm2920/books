@@ -68,25 +68,43 @@
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">publisher：</td>
 		<td class="data_td_text">
-			<textarea name="publisher" id="publisher" style="width:700px;height:60px;"><%= @publisher %></textarea>
+			<textarea name="re_publisher" id="publisher" style="width:700px;height:60px;"><%= @publisher %></textarea>
 		</td>
 	</tr>
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">Author：</td>
 		<td class="data_td_text">
-			<textarea name="author" id="author" style="width:700px;height:60px;"><%= @author %></textarea>
+			<textarea name="re_author" id="author" style="width:700px;height:60px;"><%= @author %></textarea>
 		</td>
 	</tr>
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">Tag：</td>
 		<td class="data_td_text">
-			<textarea name="tag" id="tag" style="width:700px;height:60px;"><%= @tag %></textarea>
+			<textarea name="re_tag" id="tag" style="width:700px;height:60px;"><%= @tag %></textarea>
 		</td>
 	</tr>
+	<% if @author_intro != "" %>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT">author_intro：</td>
+		<td class="data_td_text">
+			<textarea name="author_intro" id="author_intro" style="width:700px;height:60px;"><%= @author_intro %></textarea>
+		</td>
+	</tr>
+	<% end %>
 	<tr>
 		<td class="top-nav" bgcolor="#2E9AC8" height="28" colspan="2">&nbsp;&nbsp;&nbsp;<img src="/images/admin/arr_right.gif">&nbsp;&nbsp;
 		<strong>Attrs</strong></td>
 	</tr>
+	<% for attr in @attrs %>
+	<% if @product_attrs[attr.name] %>
+	<tr>
+		<td class="data_td_label" width="15%" align="RIGHT"><%= attr.name %>：</td>
+		<td class="data_td_text">
+			<textarea name="<%= attr.name %>" id="<%= attr.name %>" style="width:700px;height:60px;"><%= @product_attrs[attr.name] %></textarea>
+		</td>
+	</tr>
+	<% end %>
+	<% end %>
 	<tr>
 		<td bgcolor="#FFFFFF" colspan="2" align="CENTER" height="30">
 			<input type="submit" name="submit" value="提交" class="btn_ok">

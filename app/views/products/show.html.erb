@@ -21,22 +21,24 @@
 	<div class="position">
 		<a href="/">首页</a>&gt;&gt;<a href="<%= @node.show_url %>"><%= @node.name %></a>
 		&gt;&gt;<a href="<%= @category.show_url %>"><%= @category.name %></a>
-		&gt;&gt;<a href="<%= @product.show_url %>" class="r"><%= @product.title %></a>
+		&gt;&gt;<a href="<%= @product.show_url %>" class="r">《<%= @product.title %>》</a>
 	</div>
 	<div class="product_info clearfix">
 		<div class="ps_img">
 			<a href="<%= @product.image_path %>" title="查看大图"><img src="<%= @product.image_path %>" alt="<%= @product.title %>" /></a>
 		</div>
 		<div class="ps_detail">
-			<div class="ps_t"><%= @product.title %></div>
-			<div class="ps_i"><span>作者：</span><%#= @product.author.name %></div>
-			<div class="ps_i"><span>出版社：</span><%#= @product.publish.name %></div>
-			<%# for prop in @props %>
-			<div class="ps_i"><span><%#= prop.zh %>：</span><%#= @property[prop.name] %></div>
-			<%# end %>
+			<div class="ps_t">《<%= @product.title %>》</div>
+			<% for attr in @attrs %>
+			<% val = attr.product_val(@product.id) %>
+			<% if val and attr.attr_name %>
+			<div class="ps_i"><span><%= attr.attr_name %>：</span><%= val %></div>
+			<% end %>
+			<% end %>
+			<div class="ps_i"></div>
+			<div class="ps_i"><span>定价：</span><%= show_price_f(@product.price) %></div>
+			<div class="ps_i"><span>售价：</span><%= show_price_f(@product.sale_price) %></div>
 			<div class="ps_i"><span>库存：</span><%= @product.num %></div>
-			<div class="ps_i"><span>定价：</span><%= show_price_f(@product.sale_price) %></div>
-			<div class="ps_i"><span>售价：</span><%= show_price_f(@product.price) %></div>
 			<div class="ps_ch">
 				<div class="ps_ch_btn">
 					<a href="#"><img src="/images/order1.gif" /></a>
@@ -46,16 +48,20 @@
 			</div>
 		</div>
 	</div>
+	<% if !@product.summary.blank? %>
 	<div class="product_intro">
-		<div class="product_intro_t"><%= @product.title %> 内容简介</div>
+		<div class="product_intro_t">《<%= @product.title %>》 内容简介</div>
 		<div class="product_intro_c"><%= simple_format @product.summary %></div>
 	</div>
+	<% end %>
+	<% if @product.authors.length>0 and !@product.authors.first.intro.blank? %>
 	<div class="product_intro">
-		<div class="product_intro_t"><%= @product.title %> 目录</div>
-		<div class="product_intro_c"><%#= simple_format @product.catalogs %></div>
+		<div class="product_intro_t">《<%= @product.title %>》 作者简介</div>
+		<div class="product_intro_c"><%= simple_format @product.authors.first.intro %></div>
 	</div>
-	<div class="product_intro">
-		<div class="product_intro_t"><%= @product.title %> 资料</div>
+	<% end %>
+	<!--div class="product_intro">
+		<div class="product_intro_t">《<%= @product.title %>》 豆瓣评论</div>
 		<div class="product_intro_c"><%#= @product.summary %></div>
-	</div>
+	</div-->
 </div>
