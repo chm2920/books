@@ -5,6 +5,7 @@ class BaseController < ApplicationController
   def find_info    
     @nodes = Node.all
     @news_categories = NewsCategory.find(:all, :limit => 6)
+    @tags = Tag.find(:all, :limit => 8)
   end
 
 end

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>经典书社</title>
+  <%= stylesheet_link_tag "common", "note" %>
+  <%= csrf_meta_tag %>
+</head>
+<body>
+<div id="Container">
+<div id="wapper">
+	<div id="Header">
+		<%= render "/partials/header" %>
+	</div>
+	<div id="PageBody" class="clearfix">
+		<%= yield %>
+	</div>
+	<div id="Footer">
+		<%= render "/partials/footer" %>
+	</div>
+</div>
+</div>
+
+</body>
+</html>

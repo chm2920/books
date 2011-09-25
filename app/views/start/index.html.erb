@@ -1,31 +1,42 @@
-<!--div class="section_top">
-	xuanchuan
-</div-->
-<div class="new_ps">
-	<div class="ps_title">
-		新品上架
-	</div>
-	<ul class="ps clearfix">
-		<% 0.upto @new_products.length-1 do |i| %>
-		<li<% if i%5==0 %> class="first"<% end %>>
-			<div class="p_img"><a href="<%= @new_products[i].show_url %>"><img src="<%= @new_products[i].image_path %>" /></a></div>
-			<div class="p_title"><a href="<%= @new_products[i].show_url %>">《<%= @new_products[i].title %>》</a></div>
-			<div class="p_price"><span class="old"><%= show_price(@new_products[i].price) %></span>→<span class="new"><%= show_price(@new_products[i].sale_price) %></span></div>
-		</li>
-		<% end %>
-	</ul>
+
+<div class="side">
+	<%= render "/partials/menu" %>
+	<!--div class="specials">
+		<ul>
+			<li><a href="">经典必读30本</a></li>
+			<li><a href="">国学启蒙</a></li>
+		</ul>
+	</div-->
 </div>
-<div class="recommend_ps">
-	<div class="ps_title">
-		精品推荐
+<div class="main">
+	<div class="new_ps">
+		<div class="ps_title">
+			新品上架
+		</div>
+		<ul class="ps_list clearfix">
+			<% for p in @new_products %>
+			<li>
+				<div class="p_img"><a href="<%= p.show_url %>"><img src="<%= p.image_path %>" /></a></div>
+				<div class="p_title"><a href="<%= p.show_url %>" title="<%= p.title %>">《<%= p.title %>》</a></div>
+				<div class="p_price"><span class="old"><%= show_price(p.price) %></span>→<span class="new"><%= show_price(p.sale_price) %></span></div>
+			</li>
+			<% end %>
+		</ul>
 	</div>
-	<ul class="ps clearfix">
-		<% 0.upto @re_products.length-1 do |i| %>
-		<li<% if i%5==0 %> class="first"<% end %>>
-			<div class="p_img"><a href="<%= @re_products[i].show_url %>"><img src="<%= @re_products[i].image_path %>" /></a></div>
-			<div class="p_title"><a href="<%= @re_products[i].show_url %>">《<%= @re_products[i].title %>》</a></div>
-			<div class="p_price"><span class="old"><%= show_price(@re_products[i].price) %></span>→<span class="new"><%= show_price(@re_products[i].sale_price) %></span></div>
-		</li>
-		<% end %>
-	</ul>
+	<div class="recommend_ps">
+		<div class="ps_title">
+			精品推荐
+		</div>
+		<ul class="ps_list clearfix">
+			<% for p in @re_products %>
+			<li>
+				<div class="p_img"><a href="<%= p.show_url %>"><img src="<%= p.image_path %>" /></a></div>
+				<div class="p_title"><a href="<%= p.show_url %>" title="<%= p.title %>">《<%= p.title %>》</a></div>
+				<div class="p_price"><span class="old"><%= show_price(p.price) %></span>→<span class="new"><%= show_price(p.sale_price) %></span></div>
+			</li>
+			<% end %>
+		</ul>
+	</div>
 </div>
+
+

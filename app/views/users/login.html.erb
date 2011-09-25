@@ -1,0 +1,42 @@
+<div class="login_reg">
+	<div class="login_reg_title">登录</div>
+	<div class="login_reg_con">
+		<% if !flash[:notice].nil? %>
+		<ul class="flash_errors">
+			<li><%= flash[:notice] %></li>
+		</ul>
+		<% end %>
+		<%= form_tag "/login_rst" do %>
+		<table style="width:500px;font-size:14px;margin-top:10px" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tbody>
+			<tr>
+				<td height="45" align="left">账号或邮箱：
+					<label style="margin:0px;padding:0px;">
+						<input name="user_id" id="user_id" type="text" title="账号或邮箱" class="iInput" size="28" value="chm2920@gmail.com" style="color: rgb(153, 153, 153); ">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td height="45" align="left">密　　　码：
+				<input name="pwd" id="pwd" type="password" class="iInput" value="123456" size="28" autocomplete="off"> <span style="font-size:12px;"><a href="/retrieve_pwd">忘记密码?</a></span>
+				</td>
+			</tr>
+			<tr>
+				<td style="padding-left:75px">
+					<!--input type="checkbox" name="save_pwd" checked="checked" value="on">
+					<span style="color:#666;font-size:12px;">下次自动登录</span-->
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<div style="padding-left:80px;margin-left:10px;padding-top:20px;padding-bottom:25px">
+					<label><input name="submit" type="submit" class="btn_common btn_reg" value="登录"></label>
+				</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+</div>
+

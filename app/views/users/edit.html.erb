@@ -1,0 +1,31 @@
+<div id="Content">
+	<div class="Profile">
+		<div class="User">
+			<h1><%= @user.username %></h1>
+		</div>
+		<div class="Tabs ProfileTabs">
+			<ul>
+				<li class="Activity Active"><a href="<%= @user.show_url %>">记录</a></li>
+				<li class="Topics"><a href="<%= @user.show_url + "/topics" %>">帖子</a></li>
+				<li class="Comments"><a href="<%= @user.show_url + "/comments" %>">回复</a></li>
+			</ul>
+		</div>
+		<ul class="DataList Activities">
+			<li id="Activity_1" class="Item Activity Join">
+				<div class="ItemContent Activity">
+					<div class="Title"><%= @user.username %> 注册.</div>      
+					<div class="Excerpt">欢迎加入!</div>
+					<div class="Meta">
+						<span class="DateCreated"><%= @user.created_at.strftime("%m-%d") %></span>
+					</div>
+				</div>
+				<ul class="DataList ActivityComments Hidden">
+					
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>
+<div id="Panel">
+	<%= render "/partials/users_side" %>
+</div>

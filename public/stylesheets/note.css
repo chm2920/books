@@ -1,0 +1,32 @@
+
+
+#Header{border-bottom:1px solid #E4E4E4;}
+#Footer{margin-top:20px;border-top:1px solid #E4E4E4;}
+
+/**		login 
+ ************************************************/
+.login_reg{border:1px solid #E4E4E4;}
+.login_reg_title{height:36px;line-height:36px;padding-left:20px;background:#F8F8F8;border-bottom:1px solid #E4E4E4;font-size:14px;font-weight:bold;font-family:Microsoft Yahei;}
+.login_reg_con{padding:60px 0 60px 160px;}
+.reg_suc{font-size:14px;font-weight:normal;}
+.reg_suc p.first{color:#FF0000;}
+.reg_suc p{line-height:30px;}
+
+/**		about 
+ ************************************************/
+.about_list{border:1px solid #E4E4E4;}
+.about_title{margin-bottom:10px;padding-left:10px;height:32px;line-height:32px;font-size:14px;font-weight:bold;border-bottom:3px solid #000;background:#F8F8F8;}
+.about_node{padding:0 0 10px 20px;}
+.about_node_title{height:26px;line-height:26px;font-size:12px;font-weight:bold;}
+.about_node ul{}
+.about_node ul li{padding-left:20px;height:22px;line-height:22px;}
+.about_con{margin-top:10px;border:1px solid #E4E4E4;}
+.about_con_title{padding:40px 0;text-align:center;font-size:18px;font-weight:bold;font-family:Microsoft Yahei;}
+.about_content{padding:0 60px 20px 60px;line-height:22px;}
+.about_content p{padding:6px 0;text-indent:24px;}
+
+/**		query 
+ ************************************************/
+.query{border:1px solid #E4E4E4;}
+.query_title{height:36px;line-height:36px;padding-left:20px;background:#F8F8F8;border-bottom:1px solid #E4E4E4;font-size:14px;font-weight:bold;font-family:Microsoft Yahei;}
+.query_con{padding:60px 0 60px 160px;}

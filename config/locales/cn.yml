@@ -1,0 +1,44 @@
+cn:
+    activerecord:
+        errors:
+            messages:
+                record_invalid: "校验失败: %{errors}"
+            models:
+                user:
+                    attributes:
+                        email:
+                            blank: "不能为空"
+                            taken: "已使用"
+                            invalid: "格式不正确"
+                        username:
+                            blank: "不能为空"
+                            too_short: "太短，不要少于%{count}个字符"
+                            too_long: "太长，不要超过%{count}个字符"
+                        password:
+                            blank: "不能为空"
+                            confirmation: "两次输入的%{attribute}不一致"
+                            too_short: "太短，不要少于%{count}个字符"
+                            too_long: "太长，不要超过%{count}个字符"
+                address:
+                    attributes:
+                        user_id:
+                            blank: "找不到用户，请重新登录"
+                        username:
+                            blank: "不能为空"
+                        city:
+                            blank: "不能为空"
+                        street:
+                            blank: "不能为空"
+                        postcode:
+                            blank: "不能为空"
+        attributes:
+            user:
+                email: "邮箱"
+                username: "用户名"
+                password: "密码"
+            address:
+                user_id: "用户"
+                username: "收货人姓名"
+                city: "市区"
+                street: "街道地址"
+                postcode: "邮编"

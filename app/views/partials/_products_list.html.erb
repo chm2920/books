@@ -3,7 +3,7 @@
 		<% for p in @ps %>
 		<li>
 			<div class="p_img"><a href="<%= p.show_url %>"><img src="<%= p.image_path %>" /></a></div>
-			<div class="p_title"><a href="<%= p.show_url %>">《<%= p.title %>》</a></div>
+			<div class="p_title"><a href="<%= p.show_url %>" title="<%= p.title %>">《<%= p.title %>》</a></div>
 			<div class="p_price"><span class="old"><%= show_price(p.price) %></span>→<span class="new"><%= show_price(p.sale_price) %></span></div>
 		</li>
 		<% end %>

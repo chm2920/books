@@ -1,0 +1,9 @@
+
+#Footer{margin-top:20px;border-top:1px solid #E4E4E4;}
+
+.center_menu{margin-top:10px;border:1px solid #E4E4E4;}
+.menu_first{margin:0;padding:0;}
+.menu_title{padding-left:10px;height:32px;line-height:32px;border-bottom:3px solid #000;background:#F8F8F8;letter-spacing:1px;font-size:12px;font-weight:bold;font-family:Simsun, Microsoft Yahei;}
+.menu_list{padding:6px 10px;}
+	.menu_list li{padding-left:58px;border-top:1px dashed #E4E4E4;height:28px;line-height:28px;}
+	.menu_list li.first{border:0;}

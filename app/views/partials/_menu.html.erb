@@ -1,5 +1,5 @@
 	<div class="category_list">
-		<div class="im"></div>
+		<div class="im">图书分类</div>
 		<ul class="nodes">
 			<% for node in @nodes %>
 			<li class="node open">
@@ -15,7 +15,7 @@
 			<% end %>
 		</ul>
 		<div class="an_cat" style="border:0;">
-			<div class="an_cat_title">按出版社</div>
+			<div class="an_cat_title">品牌出版社</div>
 			<ul class="publish_cat">
 			<% for pub in @publishers %>
 				<li><a href="<%= pub.show_url %>"><%= pub.name %></a></li>

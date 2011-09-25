@@ -1,18 +1,24 @@
 Books::Application.routes.draw do
  
   match "about/(:id)" => "start#about"
+  match "order_query" => "start#query"
+  match "query_rst" => "start#query_rst"
   
   match "n/(:id)" => "products#node"
   match "c/(:id)" => "products#category"
   match "p/(:id)" => "products#show"
   match "publisher/(:id)" => "products#publisher"
   match "author/(:id)" => "products#author"
+  match "tag/(:id)" => "products#tag"
+  match "search" => "products#search"  
   
   match "login" => "users#login"
   match "login_rst" => "users#login_rst"
   match "reg" => "users#reg"
-  match "reg_rst" => "users#reg_rst"
+  match "reg_rst" => "users#create"
   match "logout" => "users#logout"
+  
+  match "center" => "center#index"
   
   match "admin" => "account#login"
   get "account/main"

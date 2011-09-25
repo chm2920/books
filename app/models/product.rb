@@ -26,11 +26,11 @@ class Product < ActiveRecord::Base
     :path => ":rails_root/public/uploads/:class/:attachment/:id_:style.jpg"
     
   def self.new_ps
-    find(:all, :limit => 10, :order => "id desc")
+    find(:all, :limit => 8, :order => "id desc")
   end
   
   def self.re_ps
-    find(:all, :limit => 10, :order => "id desc")
+    find(:all, :limit => 8, :order => "id desc")
   end
   
   def image_path

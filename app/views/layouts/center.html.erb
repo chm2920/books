@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>经典书社</title>
-  <%= stylesheet_link_tag "common", "main" %>
+  <%= stylesheet_link_tag "common", "center" %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -41,26 +41,6 @@
 	</div>
 	<div id="PageBody" class="clearfix">
 		<%= yield %>
-	</div>
-	<div id="HelpCenter" class="clearfix">
-		<div class="f_logo"><a href="/">书经<br />社典</a></div>
-		<ul class="help_ul">
-			<% for category in @news_categories %>
-			<li class="help_li">
-				<div class="help_t"><%= category.name %></div>
-				<ul class="help_items">
-					<% for topic in category.news_topics %>
-					<li><a href="<%= topic.show_url %>"><%= topic.title %></a></li>
-					<% end %>
-				</ul>
-			</li>
-			<% end %>
-		</ul>
-	</div>
-	<div id="Friendlinks">
-		<a href="/">经典书社</a>
-		&nbsp;|&nbsp;
-		<a href="http://bbs.guoxue.com/index.php" target="_blank">国学论坛</a>
 	</div>
 	<div id="Footer">
 		<%= render "/partials/footer" %>

@@ -1,3 +1,4 @@
+#encoding: utf-8
 class ProductsController < BaseController
   
   before_filter :find_side_data
@@ -21,6 +22,16 @@ class ProductsController < BaseController
   def author
     @author = Author.find(params[:id])
     @ps = @author.products.paginate :page => params[:page], :per_page => 20, :order => "id desc"
+  end
+  
+  def tag
+    @tag = Tag.find(params[:id])
+    @ps = @tag.products.paginate :page => params[:page], :per_page => 20, :order => "id desc"
+  end
+  
+  def search
+    @keyword = params[:keyword]
+    @ps = Product.paginate :page => params[:page], :per_page => 2, :conditions => "title like '%#{@keyword}%'", :order => "id desc"
   end
   
   def show

@@ -1,0 +1,27 @@
+
+<div class="side">
+	<div class="about_list">
+		<div class="about_title">帮助中心</div>
+		<% for category in @news_categories %>
+		<div class="about_node">
+			<div class="about_node_title"><%= category.name %></div>
+			<ul>
+				<% for topic in category.news_topics %>
+				<li><a href="<%= topic.show_url %>"><%= topic.title %></a></li>
+				<% end %>
+			</ul>
+		</div>
+		<% end %>
+	</div>
+</div>
+<div class="main">
+	<div class="position">
+		<a href="/">首页</a>&gt;&gt;<a href="<%= @news_topic.show_url %>"><%= @news_topic.title %></a>
+	</div>
+	<div class="about_con">
+		<div class="about_con_title"><%= @news_topic.title %></div>
+		<div class="about_content">
+			<%= @news_topic.content.html_safe %>
+		</div>
+	</div>
+</div>

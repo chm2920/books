@@ -1,0 +1,45 @@
+<div class="query">
+	<div class="query_title">订单查询</div>
+	<div class="query_con">
+		<% if !flash[:notice].nil? %>
+		<ul class="flash_errors">
+			<li><%= flash[:notice] %></li>
+		</ul>
+		<% end %>
+		<%= form_tag "/query_rst" do %>
+		<table style="width:500px;font-size:14px;margin-top:10px" border="0" align="center" cellpadding="0" cellspacing="0">
+			<tbody>
+			<tr>
+				<td height="45" align="left">收货人：
+					<label style="margin:0px;padding:0px;">
+						<input name="user_id" id="user_id" type="text" title="收货人" class="iInput" size="28" value="" style="color: rgb(153, 153, 153); ">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td height="45" align="left">订单号：
+					<label style="margin:0px;padding:0px;">
+						<input name="user_id" id="user_id" type="text" title="订单号" class="iInput" size="28" value="" style="color: rgb(153, 153, 153); ">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td height="45" align="left">手机或电话：
+					<label style="margin:0px;padding:0px;">
+						<input name="user_id" id="user_id" type="text" title="手机或电话" class="iInput" size="28" value="" style="color: rgb(153, 153, 153); ">
+					</label>
+				</td>
+			</tr>
+			<tr>
+				<td>
+				<div style="padding-left:80px;margin-left:10px;padding-top:20px;padding-bottom:25px">
+					<label><input name="submit" type="submit" class="btn_common btn_reg" value="查询订单"></label>
+				</div>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<% end %>
+	</div>
+</div>
+
