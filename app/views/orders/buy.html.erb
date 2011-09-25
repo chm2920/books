@@ -1,0 +1,50 @@
+
+<div class="buy">
+	<div class="buy_title">结算中心</div>
+	<div class="buy_uinfo">
+		<div class="buy_t">收货人信息</div>
+		<div class="buy_con">
+			<p>收货人姓名：</p>
+			<p>手机：</p>
+			<p>电话：</p>
+			<p>收货地址：</p>
+			<p>邮政编码：</p>
+			<p>街道地址：</p>
+		</div>
+		<div class="buy_t">支付方式</div>
+		<div class="buy_con">
+			<p>支付宝</p>
+		</div>
+	</div>
+	<div class="buy_pinfo">
+		<table class="c_tb">
+			<tr>
+				<th>&nbsp;</th>
+				<th>书名</th>
+				<th class="price">单价</th>
+				<th class="q">数量</th>
+				<th class="price">小计</th>
+				<th>&nbsp;</th>
+			</tr>
+		<% for item in @cart.cart_items %>
+			<tr>
+				<td class="i"><img src="<%= item.product.image_file_name %>" style="height:60px;"></td>
+				<td class="t"><a href="<%= item.product.show_url %>">《<%= item.product.title %>》</a></td>
+				<td class="p"><%= item.product.sale_price %></td>
+				<td class="p"><%= item.quantity %></td>
+				<td class="p"><%= item.product.sale_price %></td>
+				<td>&nbsp;</td>
+			</tr>
+		<% end %>
+			<tr>
+				<td colspan="6" class="total">合计：</td>
+			</tr>
+		</table>
+	</div>
+	<div class="buy_price">
+		实付款(含运费)： 43.20 元
+	</div>
+</div>
+<div class="buy_c">
+	<input type="submit" name="submit" value="确认无误，购买" class="btn_common" /><a href="/cart">返回购物车</a>
+</div>

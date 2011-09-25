@@ -1,0 +1,37 @@
+
+<div class="cart">
+	<div class="cart_title">购物车</div>
+	<% if @cart && @cart.cart_items.length > 0 %>
+	<%= form_tag "/update_cart" do %>
+	<table class="c_tb">
+		<tr>
+			<th>&nbsp;</th>
+			<th>书名</th>
+			<th class="price">单价</th>
+			<th class="q">数量</th>
+			<th class="price">小计</th>
+			<th>&nbsp;</th>
+		</tr>
+	<% for item in @cart.cart_items %>
+		<tr>
+			<td class="i"><img src="<%= item.product.image_file_name %>" style="height:60px;"></td>
+			<td class="t"><a href="<%= item.product.show_url %>">《<%= item.product.title %>》</a></td>
+			<td class="p"><%= item.product.sale_price %></td>
+			<td class="p"><%= item.quantity %></td>
+			<td class="p"><%= item.product.sale_price %></td>
+			<td><a href="/remove_item/<%= item.id %>">删除</a></td>
+		</tr>
+	<% end %>
+		<tr>
+			<td colspan="6" class="total">合计：</td>
+		</tr>
+	</table>
+	<div class="cart_btns">
+		<input type="submit" name="submit" class="btn_common" value="修改" />
+		<input type="button" name="button" class="btn_common" value="去结算" onclick="location.href='/buy'" />
+	</div>
+	<% end %>
+	<% else %>
+	还没有内容，快去<a href="/">选购</a>吧！
+	<% end %>
+</div>

@@ -88,6 +88,14 @@ table.page td a:visited {text-decoration: none;}
 table.page td a:hover {text-decoration: underline;}
 
 .iInput{padding:2px 4px;height:18px;line-height:18px;border:1px solid #CCC;font-size:12px;}
-.btn_common{padding:4px 20px;}
+.btn_common{padding:4px 20px;cursor:pointer;}
 .btn_reg{}
+
+.c_tb{width:100%;border:1px solid #E4E4E4;border-collapse:collapse;border-spacing:0;}
+.c_tb th{height:28px;line-height:28px;font-size:12px;font-weight:bold;text-align:center;background:#F7F7F7;}
+.c_tb td{padding:6px 0;height:28px;line-height:28px;border-top:1px solid #E4E4E4;text-align:center;}
+.c_tb td.i{width:160px;height:60px;line-height:0px;}
+.c_tb td.t{width:300px;text-align:left;}
+.c_tb td.p{width:120px;}
+.c_tb td.total{text-align:right;padding-right:80px;}
 

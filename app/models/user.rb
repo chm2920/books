@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_many :orders
   has_many :carts
   
+  has_many :favors
+  
   before_create :default_value_for_create
   #after_create :send_welcome_mail
   

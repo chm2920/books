@@ -41,8 +41,8 @@
 			<div class="ps_i"><span>库存：</span><%= @product.num %></div>
 			<div class="ps_ch">
 				<div class="ps_ch_btn">
-					<a href="#"><img src="/images/order1.gif" /></a>
-					<a href="#"><img src="/images/addfavorites1.gif" /></a>
+					<a href="<%= @product.add_to_cart %>"><img src="/images/order1.gif" /></a>
+					<a href="<%= @product.add_to_favor %>"><img src="/images/addfavorites1.gif" /></a>
 				</div>
 				<div class="ps_static">累计售出0件<!-- 已有0人评价 --> </div>
 			</div>

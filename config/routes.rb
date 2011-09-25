@@ -10,7 +10,17 @@ Books::Application.routes.draw do
   match "publisher/(:id)" => "products#publisher"
   match "author/(:id)" => "products#author"
   match "tag/(:id)" => "products#tag"
-  match "search" => "products#search"  
+  match "search" => "products#search"
+  
+  match "add_to_cart/(:id)" => "products#add_to_cart"
+  match "cart" => "products#cart"
+  match "update_cart" => "products#update_cart"
+  match "remove_item/(:id)" => "products#remove_item"
+  
+  match "add_to_favor/(:id)" => "orders#add_to_favor"
+  match "remove_favor/(:id)" => "orders#remove_favor"
+  match "buy" => "orders#buy"
+  match "order" => "orders#order"  
   
   match "login" => "users#login"
   match "login_rst" => "users#login_rst"
@@ -19,6 +29,8 @@ Books::Application.routes.draw do
   match "logout" => "users#logout"
   
   match "center" => "center#index"
+  match "u/orders" => "center#orders"
+  match "u/favors" => "center#favors"
   
   match "admin" => "account#login"
   get "account/main"

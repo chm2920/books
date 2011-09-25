@@ -12,32 +12,7 @@
 		<%= render "/partials/header" %>
 	</div>
 	<div id="Nav" class="clearfix">
-		<div class="nav_l">
-			<ul class="NavList">
-				<li class="first current"><a href="/">首页</a></li>
-				<% for node in @nodes %>
-				<li><a href="<%= node.show_url %>"><%= node.name %></a></li>
-				<% end %>
-			</ul>
-			<div class="Search">
-				<div class="s_txt">
-					<%= form_tag "/search" do %>
-						<input type="text" name="keyword" class="sInput" value="" />
-						<input type="submit" name="submit" class="sSubmit" value="搜索" />
-					<% end %>
-				</div>
-				<div class="hotkws">
-					<span>热门关键词：</span>
-					<% for tag in @tags %>
-					<a href="<%= tag.show_url %>" title="<%= tag.name %>"><%= tag.name %></a>
-					<% end %>  
-				</div>
-			</div>
-		</div>
-		<div class="nav_r">
-			<p><a href="#">购物车内有 <i>0</i> 件商品</a></p>
-			<p>合计<i>0.00</i> 元 <a href="#">去结算</a></p>
-		</div>
+		<%= render "/partials/nav" %>
 	</div>
 	<div id="PageBody" class="clearfix">
 		<%= yield %>

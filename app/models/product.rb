@@ -13,6 +13,8 @@ class Product < ActiveRecord::Base
   
   has_many :publisher_products, :dependent => :destroy
   
+  has_many :favors
+  
   has_attached_file :image,
     :styles => {  
       :big => {
@@ -40,6 +42,14 @@ class Product < ActiveRecord::Base
   
   def show_url
     "/p/#{self.id}"
+  end
+  
+  def add_to_cart
+    "/add_to_cart/#{self.id}"
+  end
+  
+  def add_to_favor
+    "/add_to_favor/#{self.id}"
   end
   
   def author

@@ -1,0 +1,26 @@
+<div class="side">
+	<%= render "/partials/center" %>
+</div>
+<div class="main">	
+	<div class="position">
+		<a href="/">首页</a>&gt;&gt;<a href="/center">收藏夹</a>
+	</div>
+	<table class="u_favors c_tb">
+		<tr>
+			<th>&nbsp;</th>
+			<th>书名</th>
+			<th>单价</th>
+			<th>&nbsp;</th>
+		</tr>
+		<% for favor in @favors %>
+		<% product = favor.product %>
+		<tr>
+			<td class="i"><img src="<%= product.image_file_name %>" style="height:60px;"></td>
+			<td class="t"><a href="<%= product.show_url %>">《<%= product.title %>》</a></td>
+			<td class="p"><%= product.sale_price %></td>
+			<td><a href="/remove_favor/<%= favor.id %>">删除</a></td>
+		</tr>
+		<% end %>
+	</table>
+	<%= will_paginate @favors %>
+</div>

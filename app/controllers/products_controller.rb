@@ -41,6 +41,61 @@ class ProductsController < BaseController
     @node = @category.node
   end
   
+  def add_to_cart
+    @product = Product.find(params[:id])
+    if @product.nil?
+      redirect_back
+      return
+    end
+    if !session[:user_id].nil?
+      @user_id = session[:user_id]
+    else
+      @user_id = 0
+    end
+    @product = Product.find(params[:id])
+    if !@product.nil?
+      if !session[:cart_id].nil?
+        @cart = Cart.find(session[:cart_id])
+        if @cart.nil?
+          session[:cart_id] = nil
+          @cart = Cart.new
+          @cart.user_id = @user_id
+          @cart.save
+          session[:cart_id] = @cart.id          
+        end
+      else
+        @cart = Cart.new
+        @cart.user_id = @user_id
+        @cart.save
+        session[:cart_id] = @cart.id
+      end
+      @cart_item = CartItem.new
+      @cart_item.product_id = @product.id
+      @cart_item.quantity = 1
+      @cart.cart_items << @cart_item
+      redirect_to :action => "cart"
+    else
+      redirect_back
+    end    
+  end
+  
+  def cart
+    if !session[:cart_id].nil?
+      @cart = Cart.find(session[:cart_id])
+    end
+  end
+  
+  def update_cart
+    redirect_to :action => "cart"
+  end
+  
+  def remove_item
+    @cart = Cart.find(session[:cart_id])
+    @cart_item = CartItem.find(params[:id])
+    @cart.cart_items.delete @cart_item
+    redirect_to :action => "cart"
+  end
+  
 private
   
   def find_side_data

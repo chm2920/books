@@ -71,4 +71,22 @@
 	.product_intro_t{height:30px;line-height:30px;font-size:14px;font-weight:bold;border-bottom:1px solid #E4E4E4;}
 	.product_intro_c{padding:16px;line-height:20px;font-size:12px;}
 
+/**		cart 
+ ************************************************/
+.cart{margin-top:20px;}
+	.cart_title{font-size:14px;font-weight:bold;padding:0 0 10px 20px;}
+	.cart_btns{padding:20px 0 0 0;text-align:center;}
+	.cart_btns input{margin:0 10px;}
+	
+/**		buy 
+ ************************************************/
+.buy{border:1px solid #E4E4E4;}
+	.buy_title{height:30px;line-height:30px;border-bottom:1px solid #E4E4E4;background:#F8F8F8;font-size:14px;font-weight:bold;}
+	.buy_uinfo{padding:10px 0 10px 40px;}
+		.buy_t{font-size:14px;font-weight:bold;}
+		.buy_con{}
+	.buy_pinfo{border-top:1px solid #E4E4E4;}
+	.buy_price{height:30px;line-height:30px;border-top:1px solid #E4E4E4;}
+.buy_c{margin-top:20px;text-align:center;}
+	.buy_c a{margin-left:20px;}
 
