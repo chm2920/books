@@ -20,10 +20,14 @@
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr class="data_tr">
 					<td class="data_td_label" width="5%" align="CENTER">ID</td>
-					<td class="data_td_label" width="25%" align="CENTER">分类</td>
+					<td class="data_td_label" width="8%" align="CENTER">Node</td>
+					<td class="data_td_label" width="8%" align="CENTER">Category</td>
+					<td class="data_td_label" width="10%" align="CENTER">Image</td>
 					<td class="data_td_label" align="CENTER">标题</td>
-					<td class="data_td_label" width="15%" align="CENTER">添加时间</td>
-					<td class="data_td_label" width="20%" align="CENTER">管理</td>
+					<td class="data_td_label" width="10%" align="CENTER">sale_price</td>
+					<td class="data_td_label" width="10%" align="CENTER">price</td>
+					<td class="data_td_label" width="8%" align="CENTER">添加时间</td>
+					<td class="data_td_label" width="12%" align="CENTER">管理</td>
 				</tr>
 				<%
 					if @products.length>0
@@ -32,12 +36,16 @@
 						@products.each do |product|
 				%>
 				<tr>
-					<td colspan="5" class="border_bottom"></td>
+					<td colspan="9" class="border_bottom"></td>
 				</tr>
 				<tr class="data_tr" onmouseover="this.style.backgroundColor='#F4E088';this.style.borderColor='#003c9c';this.style.cursor='default';" onmouseout="this.style.backgroundColor='';this.style.borderColor='';">
 					<td align="CENTER"><%= check_box_tag 'product_ids[]', product.id %></td>
+					<td align="CENTER"><%= product.node.name if product.node %></td>
 					<td align="CENTER"><%= product.category.name if product.category %></td>
-					<td align="CENTER"><%= product.title %></td>
+					<td align="Center"><img src="<%= product.image_file_name %>" style="height:60px;" /></td>
+					<td align="left"><%= product.title %></td>
+					<td align="CENTER"><%= product.sale_price %></td>
+					<td align="CENTER"><%= product.price %></td>
 					<td align="CENTER"><%= product.created_at.strftime("%Y-%m-%d") %></td>
 					<td align="CENTER">
 						<a href="/admin/products/<%= product.id %>/edit">修改</a>&nbsp;|&nbsp;<%= link_to "删除", {:action => "destroy", :id => product}, :confirm => "确定删除？", :method => "delete" %>
@@ -47,10 +55,10 @@
 						end
 				%>
 				<tr>
-					<td class="border_bottom" colspan="5" align="CENTER"></td>
+					<td class="border_bottom" colspan="9" align="CENTER"></td>
 				</tr>
 				<tr class="data_tr">
-					<td colspan="5" align="CENTER" height="30">
+					<td colspan="9" align="CENTER" height="30">
 						<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="page">
 							<tr>
 								<td width="45%">&nbsp;
@@ -67,10 +75,10 @@
 					else
 				%>
 				<tr>
-					<td class="border_bottom" colspan="5" align="CENTER"></td>
+					<td class="border_bottom" colspan="9" align="CENTER"></td>
 				</tr>
 				<tr class="data_tr">
-					<td colspan="5" align="left" height="30">&nbsp;还没有内容。</td>
+					<td colspan="9" align="left" height="30">&nbsp;还没有内容。</td>
 				</tr>
 				<%
 					end

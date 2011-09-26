@@ -34,7 +34,7 @@
 		<td class="data_td_label" width="15%" align="RIGHT">作者：</td>
 		<td class="data_td_text">
 			<select name="product[author_id]" id="product_author_id" class="input_text">
-				<%= options_from_collection_for_select @authors, :id, :name, @product.author_id %>
+				<%= options_from_collection_for_select @authors, :id, :name %>
 			</select>
 		</td>
 	</tr>
@@ -42,7 +42,7 @@
 		<td class="data_td_label" width="15%" align="RIGHT">出版社：</td>
 		<td class="data_td_text">
 			<select name="product[publish_id]" id="product_publish_id" class="input_text">
-				<%= options_from_collection_for_select @publishes, :id, :name, @product.publish_id %>
+				<%= options_from_collection_for_select @publishers, :id, :name %>
 			</select>
 		</td>
 	</tr>
@@ -53,12 +53,12 @@
 	</tr>
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">定价：</td>
-		<td class="data_td_text"><input type="text" value="<%= @product.old_price %>" name="product[old_price]" id="product_old_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_text"><input type="text" value="<%= @product.price %>" name="product[price]" id="product_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
 		</td>
 	</tr>
 	<tr>
 		<td class="data_td_label" width="15%" align="RIGHT">售价：</td>
-		<td class="data_td_text"><input type="text" value="<%= @product.price %>" name="product[price]" id="product_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_text"><input type="text" value="<%= @product.sale_price %>" name="product[sale_price]" id="product_sale_price" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
 		</td>
 	</tr>
 	<tr>
@@ -66,28 +66,13 @@
 		<td class="data_td_text"><input type="text" value="<%= @product.num %>" name="product[num]" id="product_num" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
 		</td>
 	</tr>
-	<% for p in @props %>
+	<%# for p in @props %>
 	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT"><%= p.zh %>：</td>
-		<td class="data_td_text"><input type="text" value="<%= @prop_hash[p.name] %>" name="property[<%= p.name %>]" id="property_<%= p.name %>" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
+		<td class="data_td_label" width="15%" align="RIGHT"><%#= p.zh %>：</td>
+		<td class="data_td_text"><input type="text" value="<%#= @prop_hash[p.name] %>" name="property[<%#= p.name %>]" id="property_<%#= p.name %>" class="input_text" onFocus="fEvent('focus',this)" onBlur="fEvent('blur',this)" onMouseOver="fEvent('mouseover',this)" onMouseOut="fEvent('mouseout',this)">
 		</td>
 	</tr>
-	<% end %>
-	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">目录：</td>
-		<td class="data_td_text"><%= f.text_area :catalogs, :style => "width:600px;height:360px;" %>
-		</td>
-	</tr>
-	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">资料：</td>
-		<td class="data_td_text"><%= f.text_area :summary, :style => "width:600px;height:360px;" %>
-		</td>
-	</tr>
-	<tr>
-		<td class="data_td_label" width="15%" align="RIGHT">简介：</td>
-		<td class="data_td_text"><%= f.text_area :intro, :style => "width:600px;height:360px;", :id => "kindeditor" %>
-		</td>
-	</tr>
+	<%# end %>
 	<tr>
 		<td bgcolor="#FFFFFF" colspan="2" align="CENTER" height="30">
 			<input type="submit" name="submit" value="提交" class="btn_ok">

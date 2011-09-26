@@ -18,10 +18,9 @@ class Admin::ProductsController < Admin::AdminBackEndController
   def edit
     @nodes = Node.all
     @authors = Author.all
-    @publishes = Publish.all
+    @publishers = Publisher.all
     @props = ProductProp.all
     @product = Product.find(params[:id])
-    @prop_hash = Hash.from_xml(@product.property)["hash"]
   end
   
   def create

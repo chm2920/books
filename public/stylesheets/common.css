@@ -88,6 +88,7 @@ table.page td a:visited {text-decoration: none;}
 table.page td a:hover {text-decoration: underline;}
 
 .iInput{padding:2px 4px;height:18px;line-height:18px;border:1px solid #CCC;font-size:12px;}
+.iText{width:380px;height:60px;border:1px solid #CCC;}
 .btn_common{padding:4px 20px;cursor:pointer;}
 .btn_reg{}
 

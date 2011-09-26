@@ -77,16 +77,25 @@
 	.cart_title{font-size:14px;font-weight:bold;padding:0 0 10px 20px;}
 	.cart_btns{padding:20px 0 0 0;text-align:center;}
 	.cart_btns input{margin:0 10px;}
+.no_cart{text-align:center;padding:20px 0;font-size:14px;}
+	.no_cart a{padding:0 4px;}
 	
 /**		buy 
  ************************************************/
 .buy{border:1px solid #E4E4E4;}
-	.buy_title{height:30px;line-height:30px;border-bottom:1px solid #E4E4E4;background:#F8F8F8;font-size:14px;font-weight:bold;}
-	.buy_uinfo{padding:10px 0 10px 40px;}
-		.buy_t{font-size:14px;font-weight:bold;}
-		.buy_con{}
+	.buy_title{padding-left:10px;height:33px;line-height:33px;font-size:14px;font-weight:bold;background:#F8F8F8;border-bottom:1px solid #E4E4E4;}
+	.buy_uinfo{padding:20px 0 20px 80px;}
+		.buy_t{height:32px;line-height:32px;font-size:14px;font-weight:bold;}
+		.buy_con{padding:10px 0 10px 20px;}
+			.buy_con p{padding:3px 0;line-height:24px;}
+			.buy_con label{float:left;display:inline-block;text-align:right;width:120px;}
+			.buy_con .iInput{float:left;display:inline;}
+			.buy_con .payment{padding:0 108px;}
+			.buy_con .payment li{height:32px;line-height:32px;}
+				.buy_con .payment li input{margin-right:2px;margin-bottom:-4px;}
 	.buy_pinfo{border-top:1px solid #E4E4E4;}
-	.buy_price{height:30px;line-height:30px;border-top:1px solid #E4E4E4;}
+	.buy_price{padding:2px 0 2px 60px;height:46px;line-height:46px;border-top:1px solid #E4E4E4;font-size:14px;}
+		.buy_price span{margin:2px 2px;font-size:24px;font-weight:bold;letter-spacing:1px;color:#C1272D;}
 .buy_c{margin-top:20px;text-align:center;}
 	.buy_c a{margin-left:20px;}
 

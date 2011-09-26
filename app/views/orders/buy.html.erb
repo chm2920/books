@@ -4,20 +4,40 @@
 	<div class="buy_uinfo">
 		<div class="buy_t">收货人信息</div>
 		<div class="buy_con">
-			<p>收货人姓名：</p>
-			<p>手机：</p>
-			<p>电话：</p>
-			<p>收货地址：</p>
-			<p>邮政编码：</p>
-			<p>街道地址：</p>
+			<p class="clearfix">
+				<label>收货人姓名：</label>
+				<input type="text" name="" value="" class="iInput" />
+			</p>
+			<p class="clearfix">
+				<label>手机：</label>
+				<input type="text" name="" value="" class="iInput" />
+			</p>
+			<p class="clearfix">
+				<label>电话：</label>
+				<input type="text" name="" value="" class="iInput" />
+			</p>
+			<p class="clearfix">
+				<label>收货地址：</label>
+				<input type="text" name="" value="" class="iInput" />
+			</p>
+			<p class="clearfix">
+				<label>街道地址：</label>
+				<textarea name="" class="iText"></textarea>
+			</p>
+			<p class="clearfix">
+				<label>邮政编码：</label>
+				<input type="text" name="post" value="" class="iInput" />
+			</p>
 		</div>
 		<div class="buy_t">支付方式</div>
 		<div class="buy_con">
-			<p>支付宝</p>
+			<ul class="payment">
+				<li><input type="radio" name="payment" value="alipay" checked="checked" /> 支付宝</li>
+			</ul>
 		</div>
 	</div>
 	<div class="buy_pinfo">
-		<table class="c_tb">
+		<table class="c_tb" style="border:0;">
 			<tr>
 				<th>&nbsp;</th>
 				<th>书名</th>
@@ -42,7 +62,7 @@
 		</table>
 	</div>
 	<div class="buy_price">
-		实付款(含运费)： 43.20 元
+		实付款(含运费)： <span>43.20</span> 元
 	</div>
 </div>
 <div class="buy_c">
