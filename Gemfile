@@ -1,9 +1,9 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.7'
+gem 'rails', '3.2.2'
 gem 'sqlite3'
 
-gem 'will_paginate', '3.0.pre'
+gem 'will_paginate'
 
 gem 'kindeditor'
 gem 'paperclip'
